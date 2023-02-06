@@ -116,3 +116,11 @@ function onModalOutsideClick(evt) {
   if (!elTarget.matches("[data-modal]")) return
   elTarget.classList.remove("show")
 }
+
+document.addEventListener("scroll", (e) => {
+  if (window.pageYOffset > 500) {
+    document.querySelector("[data-to-down]").style.opacity = "0"
+  } else {
+    document.querySelector("[data-to-down]").style.opacity = "1"
+  }
+})
