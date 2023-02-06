@@ -112,8 +112,8 @@ body {
   }
 
   @media only screen and (max-width: $mobile) {
-    height: calc(100vh - 63px);
-    transform: translate(0, -63px);
+    // height: calc(100vh - 63px);
+    transform: translate(0, - 63px);
   }
 }
 
