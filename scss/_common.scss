@@ -100,8 +100,6 @@ body {
     inset: 0;
     background-color: rgba(0, 0, 0, 0.5);
   }
-
-  
 }
 
 .top-banner__inner {
@@ -131,32 +129,32 @@ body {
 .top-banner__title {
   margin-bottom: 10px;
   text-align: center;
-  font-size: 34px;
+  font-size: 32px;
   text-transform: uppercase;
 
   @media only screen and (max-width: $tablet-l) {
-    font-size: 30px;
+    font-size: 28px;
   }
   @media only screen and (max-width: $tablet) {
-    font-size: 26px;
+    font-size: 24px;
   }
   @media only screen and (max-width: $mobile) {
-    font-size: 23px;
+    font-size: 22px;
   }
 }
 
 .top-banner__desc {
   align-items: center;
-  font-size: 24px;
+  font-size: 21px;
   text-align: justify;
 
-  
   @media only screen and (max-width: $tablet-l) {
-    font-size: 22px;
-  }
-  @media only screen and (max-width: $tablet) {
     font-size: 20px;
   }
-  @media only screen and (max-width: $mobile) {
+  @media only screen and (max-width: $tablet) {
     font-size: 18px;
+  }
+  @media only screen and (max-width: $mobile) {
+    font-size: 16px;
+  }
 }

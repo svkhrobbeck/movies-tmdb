@@ -130,29 +130,44 @@ body {
 .top-banner__title {
   margin-bottom: 10px;
   text-align: center;
-  font-size: 34px;
+  font-size: 32px;
   text-transform: uppercase;
 }
 @media only screen and (max-width: 992px) {
   .top-banner__title {
-    font-size: 30px;
+    font-size: 28px;
   }
 }
 @media only screen and (max-width: 768px) {
   .top-banner__title {
-    font-size: 26px;
+    font-size: 24px;
   }
 }
 @media only screen and (max-width: 576px) {
   .top-banner__title {
-    font-size: 23px;
+    font-size: 22px;
   }
 }
 
 .top-banner__desc {
   align-items: center;
-  font-size: 24px;
+  font-size: 21px;
   text-align: justify;
+}
+@media only screen and (max-width: 992px) {
+  .top-banner__desc {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .top-banner__desc {
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .top-banner__desc {
+    font-size: 16px;
+  }
 }
 
 /* CONTAINER */
