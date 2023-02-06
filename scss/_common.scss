@@ -207,7 +207,7 @@ body {
   }
 
   @media only screen and (max-width: $mobile) {
-    bottom: 38px;
+    bottom: 58px;
   }
 }
 
@@ -216,14 +216,14 @@ body {
     bottom: 32px;
     
     @media only screen and (max-width: $mobile) {
-      bottom: 50px;
+      bottom: 70px;
     }
   }
 
   25% {
     bottom: 20px;
     @media only screen and (max-width: $mobile) {
-      bottom: 38px;
+      bottom: 58px;
     }
   }
 
@@ -231,7 +231,7 @@ body {
     bottom: 32px;
     
     @media only screen and (max-width: $mobile) {
-      bottom: 50px;
+      bottom: 70px;
     }
   }
 
@@ -239,7 +239,7 @@ body {
     bottom: 20px;
 
     @media only screen and (max-width: $mobile) {
-      bottom: 38px;
+      bottom: 58px;
     }
   }
 
@@ -247,7 +247,7 @@ body {
     bottom: 32px;
 
     @media only screen and (max-width: $mobile) {
-      bottom: 50px;
+      bottom: 70px;
     }
   }
 }
