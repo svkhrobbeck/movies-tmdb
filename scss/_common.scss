@@ -214,7 +214,7 @@ body {
 @keyframes down-anim {
   0% {
     bottom: 32px;
-    
+
     @media only screen and (max-width: $mobile) {
       bottom: 70px;
     }
@@ -229,7 +229,7 @@ body {
 
   50% {
     bottom: 32px;
-    
+
     @media only screen and (max-width: $mobile) {
       bottom: 70px;
     }
