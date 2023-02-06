@@ -115,11 +115,6 @@ body {
     height: calc(100vh - 82px);
   }
 }
-@media only screen and (max-width: 576px) {
-  .top-banner {
-    height: calc(100vh - 63px);
-  }
-}
 
 @media only screen and (max-width: 992px) {
   .top-banner__inner {
