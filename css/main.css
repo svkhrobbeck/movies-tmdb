@@ -240,6 +240,12 @@ body {
 @media only screen and (max-width: 768px) {
   .modal__inner {
     padding: 30px;
+    max-width: 85%;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .modal__inner {
+    max-width: 90%;
   }
 }
 
