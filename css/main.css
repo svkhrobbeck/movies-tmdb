@@ -110,11 +110,6 @@ body {
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
-@media only screen and (max-width: 768px) {
-  .top-banner {
-    height: calc(100vh - 82px);
-  }
-}
 
 @media only screen and (max-width: 992px) {
   .top-banner__inner {
@@ -334,16 +329,6 @@ body {
 .site-header {
   background-color: #171717;
   padding: 28px 0;
-}
-@media screen and (max-width: 768px) {
-  .site-header {
-    padding: 20px 0;
-  }
-}
-@media screen and (max-width: 576px) {
-  .site-header {
-    padding: 15px 0;
-  }
 }
 
 /* POPULAR */
