@@ -1,37 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movies App</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project</title>
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" href="images/"> -->
 
-  <!-- Favicon -->
-  <!-- <link rel="shortcut icon" href="images/"> -->
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
-</head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="container site-header__container">
+        <a href="/" class="logo">
+          <img src="images/logo.svg" alt="MovieDB" width="110" height="52" />
+        </a>
+      </div>
+    </header>
+    <!-- /HEADER -->
 
-<body>
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <!-- TOP BANNER -->
+      <section class="top-banner" data-top-banner-wrapper>
+        <div class="container top-banner__inner">
+          <div class="top-banner__content">
+            <h2 class="top-banner__title" data-top-banner-title></h2>
+            <p class="top-banner__desc" data-top-banner-desc></p>
+          </div>
+        </div>
+      </section>
+      <!-- /TOP BANNER -->
 
-  <!-- HEADER -->
-  <!-- /HEADER -->
+      <!-- POPULAR -->
+      <section class="popular container" data-popular-wrapper></section>
+      <!-- /POPULAR -->
+    </main>
+    <!-- /MAIN CONTENT -->
 
-  <!-- MAIN CONTENT -->
-  <main class="main-content">
-  </main>
-  <!-- /MAIN CONTENT -->
+    <!-- FOOTER -->
+    <header class="site-footer">
+      <div class="container site-footer__container">
+        <a href="/" class="logo">
+          <img src="images/logo.svg" alt="MovieDB" width="110" height="52" />
+        </a>
+      </div>
+    </header>
+    <!-- /FOOTER -->
 
-  <!-- FOOTER -->
-  <!-- /FOOTER -->
+    <!-- MODAL -->
+    <div class="modal" id="modal" data-modal>
+      <div class="modal__inner">
+        <div class="modal__inner-top">
+          <button class="modal__close" type="button" data-modal-close>
+            <img src="images/icon-close.svg" alt="" aria-hidden="true" />
+          </button>
+        </div>
+        <div class="modal__content">
+          <iframe
+            class="modal__video"
+            width="400"
+            height="225"
+            data-modal-video
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <!-- /MODAL -->
 
+    <!-- TEMPLATE POPULAR -->
+    <template data-popular-template>
+      <div class="popular__card card-popular">
+        <img
+          class="card-popular__img"
+          width="300"
+          height="450"
+          data-popular-img
+        />
+        <span class="card-popular__rating-badge" data-popular-rating></span>
+        <button
+          class="card-popular__btn"
+          type="button"
+          data-modal-open="#modal"
+        >
+          <img
+            class="card-popular__youtube-logo"
+            src="images/logo-youtube.svg"
+            alt="logo youtube"
+          />
+        </button>
+        <h2 class="card-popular__title" data-popular-title></h2>
+      </div>
+    </template>
+    <!-- /TEMPLATE POPULAR -->
 
-  <!-- SCRIPTS -->
-  <!-- <script src="js/main.js"></script> -->
-
-</body>
-
+    <!-- SCRIPTS -->
+    <script src="js/main.js"></script>
+  </body>
 </html>
