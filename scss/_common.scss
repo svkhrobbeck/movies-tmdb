@@ -194,7 +194,11 @@ body {
   bottom: 20px;
   transform: translate(-50%);
   animation: down-anim 2s infinite;
-  transition: bottom 0.5s ease, opacity .5s ease;
+  transition: bottom 0.5s ease, opacity 0.5s ease;
+
+  @media only screen and (max-width: $mobile) {
+    display: none;
+  }
 }
 
 @keyframes down-anim {

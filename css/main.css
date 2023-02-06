@@ -213,6 +213,11 @@ body {
           animation: down-anim 2s infinite;
   transition: bottom 0.5s ease, opacity 0.5s ease;
 }
+@media only screen and (max-width: 576px) {
+  .to-down {
+    display: none;
+  }
+}
 
 @-webkit-keyframes down-anim {
   0% {
