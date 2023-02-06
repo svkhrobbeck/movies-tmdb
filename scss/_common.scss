@@ -107,13 +107,13 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
   }
 
-  // @media only screen and (max-width: $tablet) {
-  //   height: calc(100vh - 82px);
-  // }
+  @media only screen and (max-width: $tablet) {
+    height: calc(100vh - 82px);
+  }
 
-  // @media only screen and (max-width: $mobile) {
-  //   height: calc(100vh - 63px);
-  // }
+  @media only screen and (max-width: $mobile) {
+    height: calc(100vh - 63px);
+  }
 }
 
 .top-banner__inner {
