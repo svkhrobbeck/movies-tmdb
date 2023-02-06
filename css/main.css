@@ -133,6 +133,21 @@ body {
   font-size: 34px;
   text-transform: uppercase;
 }
+@media only screen and (max-width: 992px) {
+  .top-banner__title {
+    font-size: 30px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .top-banner__title {
+    font-size: 26px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .top-banner__title {
+    font-size: 23px;
+  }
+}
 
 .top-banner__desc {
   align-items: center;
@@ -193,8 +208,10 @@ body {
 
 .modal__video {
   border: none;
-  width: 600px;
-  height: 337.5px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 337.5px;
+  height: 100%;
 }
 
 .site-header {

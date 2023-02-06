@@ -43,6 +43,8 @@
 
 .modal__video {
   border: none;
-  width: 600px;
-  height: 337.5px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 337.5px;
+  height: 100%;
 }

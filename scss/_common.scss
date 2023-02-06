@@ -133,10 +133,30 @@ body {
   text-align: center;
   font-size: 34px;
   text-transform: uppercase;
+
+  @media only screen and (max-width: $tablet-l) {
+    font-size: 30px;
+  }
+  @media only screen and (max-width: $tablet) {
+    font-size: 26px;
+  }
+  @media only screen and (max-width: $mobile) {
+    font-size: 23px;
+  }
 }
 
 .top-banner__desc {
   align-items: center;
   font-size: 24px;
   text-align: justify;
+
+  
+  @media only screen and (max-width: $tablet-l) {
+    font-size: 22px;
+  }
+  @media only screen and (max-width: $tablet) {
+    font-size: 20px;
+  }
+  @media only screen and (max-width: $mobile) {
+    font-size: 18px;
 }
