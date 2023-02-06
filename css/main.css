@@ -153,20 +153,32 @@ body {
   align-items: center;
   font-size: 21px;
   text-align: justify;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 @media only screen and (max-width: 992px) {
   .top-banner__desc {
     font-size: 20px;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
   }
 }
 @media only screen and (max-width: 768px) {
   .top-banner__desc {
     font-size: 18px;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
   }
 }
 @media only screen and (max-width: 576px) {
   .top-banner__desc {
     font-size: 16px;
+    -webkit-line-clamp: 7;
+    line-clamp: 7;
   }
 }
 
@@ -204,6 +216,11 @@ body {
   border-radius: 10px;
   padding: 20px;
 }
+@media only screen and (max-width: 768px) {
+  .modal__inner {
+    padding: 30px;
+  }
+}
 
 .modal__content {
   display: flex;
@@ -219,6 +236,13 @@ body {
   background-color: transparent;
   padding: 0;
   margin: 0;
+  transition: top 0.5s ease, right 0.5s ease;
+}
+@media only screen and (max-width: 992px) {
+  .modal__close {
+    right: 5px;
+    top: 5px;
+  }
 }
 
 .modal__video {

@@ -147,14 +147,26 @@ body {
   align-items: center;
   font-size: 21px;
   text-align: justify;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
 
   @media only screen and (max-width: $tablet-l) {
     font-size: 20px;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
   }
   @media only screen and (max-width: $tablet) {
     font-size: 18px;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
   }
   @media only screen and (max-width: $mobile) {
     font-size: 16px;
+    -webkit-line-clamp: 7;
+    line-clamp: 7;
   }
 }
