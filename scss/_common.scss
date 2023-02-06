@@ -205,26 +205,49 @@ body {
       height: 30px;
     }
   }
+
+  @media only screen and (max-width: $mobile) {
+    bottom: 38px;
+  }
 }
 
 @keyframes down-anim {
   0% {
     bottom: 32px;
+    
+    @media only screen and (max-width: $mobile) {
+      bottom: 50px;
+    }
   }
 
   25% {
     bottom: 20px;
+    @media only screen and (max-width: $mobile) {
+      bottom: 38px;
+    }
   }
 
   50% {
     bottom: 32px;
+    
+    @media only screen and (max-width: $mobile) {
+      bottom: 50px;
+    }
   }
 
   75% {
     bottom: 20px;
+
+    @media only screen and (max-width: $mobile) {
+      bottom: 38px;
+    }
   }
 
   100% {
     bottom: 32px;
+
+    @media only screen and (max-width: $mobile) {
+      bottom: 50px;
+    }
   }
 }
