@@ -71,19 +71,24 @@ body {
   }
 }
 
+/* LOGO */
+.logo__img {
+  width: 110px;
+  height: 52px;
+
+  @media screen and (max-width: $tablet) {
+    width: 90px;
+    height: auto;
+  }
+  @media screen and (max-width: $mobile) {
+    width: 70px;
+  }
+}
+
 /* MAIN CONTENT */
 .main-content {
   flex-grow: 1;
   padding-bottom: 50px;
-}
-
-/* BUTTON */
-.button {
-  display: inline-block;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
 }
 
 /* TOP BANNER */
@@ -92,6 +97,7 @@ body {
   background: no-repeat center / cover;
   height: calc(100vh - 107px);
   margin-bottom: 100px;
+  transition: height 0.5s ease;
 
   &::before {
     content: "";
@@ -99,6 +105,14 @@ body {
     z-index: 1;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  @media only screen and (max-width: $tablet) {
+    height: calc(100vh - 82px);
+  }
+
+  @media only screen and (max-width: $mobile) {
+    height: 500px;
   }
 }
 
@@ -131,6 +145,7 @@ body {
   text-align: center;
   font-size: 32px;
   text-transform: uppercase;
+  transition: font-size 0.5s ease;
 
   @media only screen and (max-width: $tablet-l) {
     font-size: 28px;
@@ -153,6 +168,7 @@ body {
   -webkit-line-clamp: 4;
   line-clamp: 4;
   -webkit-box-orient: vertical;
+  transition: font-size 0.5s ease;
 
   @media only screen and (max-width: $tablet-l) {
     font-size: 20px;

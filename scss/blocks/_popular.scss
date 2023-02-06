@@ -1,11 +1,31 @@
 /* POPULAR */
 .popular {
+  user-select: none;
+}
+
+.popular__title {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 30px;
+  transition: font-size .5s ease;
+
+  @media only screen and (max-width: $tablet-l) {
+    font-size: 42px;
+  }
+  @media only screen and (max-width: $tablet) {
+    font-size: 36px;
+  }
+  @media only screen and (max-width: $mobile) {
+    font-size: 30px;
+  }
+}
+
+.popular__wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
   row-gap: 50px;
   justify-content: center;
-  user-select: none;
 }
 
 .card-popular {
