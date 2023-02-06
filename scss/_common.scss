@@ -111,9 +111,9 @@ body {
     height: calc(100vh - 82px);
   }
 
-  // @media only screen and (max-width: $mobile) {
-  //   height: calc(100vh - 63px);
-  // }
+  @media only screen and (max-width: $mobile) {
+    height: calc(100vh - 63px);
+  }
 }
 
 .top-banner__inner {
@@ -205,10 +205,6 @@ body {
       height: 30px;
     }
   }
-
-  // @media only screen and (max-width: $mobile) {
-  //   display: none;
-  // }
 }
 
 @keyframes down-anim {
