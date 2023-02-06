@@ -112,7 +112,7 @@ body {
   }
 
   @media only screen and (max-width: $mobile) {
-    height: 500px;
+    height: calc(100vh - 62px);
   }
 }
 
@@ -196,9 +196,19 @@ body {
   animation: down-anim 2s infinite;
   transition: bottom 0.5s ease, opacity 0.5s ease;
 
-  @media only screen and (max-width: $mobile) {
-    display: none;
+  svg {
+    width: 34px;
+    height: 45px;
+
+    @media only screen and (max-width: $mobile) {
+      width: 23px;
+      height: 30px;
+    }
   }
+
+  // @media only screen and (max-width: $mobile) {
+  //   display: none;
+  // }
 }
 
 @keyframes down-anim {

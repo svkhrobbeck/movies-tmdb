@@ -117,7 +117,7 @@ body {
 }
 @media only screen and (max-width: 576px) {
   .top-banner {
-    height: 500px;
+    height: calc(100vh - 62px);
   }
 }
 
@@ -213,9 +213,14 @@ body {
           animation: down-anim 2s infinite;
   transition: bottom 0.5s ease, opacity 0.5s ease;
 }
+.to-down svg {
+  width: 34px;
+  height: 45px;
+}
 @media only screen and (max-width: 576px) {
-  .to-down {
-    display: none;
+  .to-down svg {
+    width: 23px;
+    height: 30px;
   }
 }
 
