@@ -12,12 +12,12 @@ const elCardTemplate = document.querySelector("[data-card-template]")
 const elLoader = document.querySelector("[data-loader]")
 
 // Get data
-async function getData() {
+async function getData(pagesOfPopular = 1, pagesOfTop = 1) {
   loader(true)
-  let response = await fetch(`${BASE_API}popular?api_key=${API_KEY}`)
+  let response = await fetch(`${BASE_API}popular?api_key=${API_KEY}&page=${pagesOfPopular}`)
   let data = await response.json()
 
-  let responseTop = await fetch(`${BASE_API}top_rated?api_key=${API_KEY}`)
+  let responseTop = await fetch(`${BASE_API}top_rated?api_key=${API_KEY}&page=${pagesOfTop}`)
   let dataTop = await responseTop.json()
   loader(false)
 
