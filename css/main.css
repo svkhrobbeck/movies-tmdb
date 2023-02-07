@@ -470,36 +470,39 @@ body {
 }
 
 /* POPULAR */
-.popular {
+.popular, .top {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
 }
+.popular:not(:last-child), .top:not(:last-child) {
+  margin-bottom: 100px;
+}
 
-.popular__title {
+.movie__title {
   font-size: 48px;
   text-align: center;
   margin-bottom: 30px;
   transition: font-size 0.5s ease;
 }
 @media only screen and (max-width: 992px) {
-  .popular__title {
+  .movie__title {
     font-size: 42px;
   }
 }
 @media only screen and (max-width: 768px) {
-  .popular__title {
+  .movie__title {
     font-size: 36px;
   }
 }
 @media only screen and (max-width: 576px) {
-  .popular__title {
+  .movie__title {
     font-size: 30px;
   }
 }
 
-.popular__wrapper {
+.movie__wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;

@@ -36,7 +36,7 @@
               <a class="sitenav__link" href="#popular">Popular</a>
             </li>
             <li class="sitenav__item">
-              <a class="sitenav__link" href="#"></a>
+              <a class="sitenav__link" href="#top">Top</a>
             </li>
           </ul>
         </nav>
@@ -66,10 +66,19 @@
 
       <!-- POPULAR -->
       <section class="popular" id="popular">
-        <h2 class="popular__title" data-popular-title></h2>
-        <div class="container popular__wrapper" data-popular-wrapper></div>
+        <h2 class="popular__title movie__title" data-popular-title></h2>
+        <div class="container popular__wrapper movie__wrapper" data-popular-wrapper></div>
       </section>
       <!-- /POPULAR -->
+
+      <!-- TOP -->
+      <section class="top" id="top">
+        <h2 class="top__title movie__title" data-top-title></h2>
+        <div class="container top__wrapper movie__wrapper" data-top-wrapper></div>
+      </section>
+      <!-- /TOP -->
+
+
     </main>
     <!-- /MAIN CONTENT -->
 
@@ -116,15 +125,15 @@
     <!-- /MODAL -->
 
     <!-- TEMPLATE POPULAR -->
-    <template data-popular-template>
+    <template data-card-template>
       <div class="popular__card card-popular">
         <img
           class="card-popular__img"
           width="300"
           height="450"
-          data-popular-img
+          data-card-img
         />
-        <span class="card-popular__rating-badge" data-popular-rating></span>
+        <span class="card-popular__rating-badge" data-card-rating></span>
         <button
           class="card-popular__btn"
           type="button"
@@ -136,7 +145,7 @@
             alt="logo youtube"
           />
         </button>
-        <h2 class="card-popular__title" data-popular-title></h2>
+        <h2 class="card-popular__title" data-card-title></h2>
       </div>
     </template>
     <!-- /TEMPLATE POPULAR -->

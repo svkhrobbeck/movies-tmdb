@@ -5,18 +5,23 @@ const BG_URL = "https://image.tmdb.org/t/p/w1280"
 
 const elTopBannerWrapper = document.querySelector("[data-top-banner-wrapper]")
 const elPopularWrapper = document.querySelector("[data-popular-wrapper]")
-const elPopularTemplate = document.querySelector("[data-popular-template]")
+const elTopWrapper = document.querySelector("[data-top-wrapper]")
+const elCardTemplate = document.querySelector("[data-card-template]")
 const elLoader = document.querySelector("[data-loader]")
 
 // Get data
 async function getData(key) {
   loader(true)
-  const response = await fetch(`${BASE_API}popular?api_key=${key}`)
+  const response = await fetch(`${BASE_API}popular?api_key=${key}&language=en-US&page=1`)
   const data = await response.json()
+
+  const responseTop = await fetch(`${BASE_API}top_rated?api_key=${key}&language=en-US&page=1`)
+  const dataTop = await responseTop.json()
   loader(false)
 
   renderTopBanner(data.results)
   renderPopularMovies(data.results)
+  renderTopMovies(dataTop.results)
 }
 getData(API_KEY)
 
@@ -52,16 +57,16 @@ function renderPopularMovies(movies) {
   elPopularWrapper.innerHTML = ""
 
   movies.forEach(movie => {
-    const elPopularCard = elPopularTemplate.content.cloneNode(true)
-    const elPopularCardImg = elPopularCard.querySelector("[data-popular-img]")
-    const elPopularCardRating = elPopularCard.querySelector("[data-popular-rating]")
+    const elPopularCard = elCardTemplate.content.cloneNode(true)
+    const elPopularCardImg = elPopularCard.querySelector("[data-card-img]")
+    const elPopularCardRating = elPopularCard.querySelector("[data-card-rating]")
 
     document.querySelector("[data-popular-title]").textContent = "POPULAR MOVIES"
     elPopularCard.querySelector("[data-modal-open]").dataset.movieId = movie.id
     elPopularCardImg.src = `${IMG_URL}${movie.poster_path}`
     elPopularCardImg.alt = movie.title
     elPopularCardRating.textContent = movie.vote_average
-    elPopularCard.querySelector("[data-popular-title]").textContent = movie.title
+    elPopularCard.querySelector("[data-card-title]").textContent = movie.title
 
     // Rating border color
     if (movie.vote_average < 6) {
@@ -70,11 +75,42 @@ function renderPopularMovies(movies) {
       elPopularCardRating.style.borderColor = "#ff8000"
     } else if (movie.vote_average < 8) {
       elPopularCardRating.style.borderColor = "	#ffea00"
-    } else if (movie.vote_average <= 9) {
+    } else if (movie.vote_average <= 10) {
       elPopularCardRating.style.borderColor = "#32cd32"
     }
 
     elPopularWrapper.appendChild(elPopularCard)
+  });
+}
+
+// Render top
+function renderTopMovies(movies) {
+  elTopWrapper.innerHTML = ""
+
+  movies.forEach(movie => {
+    const elTopCard = elCardTemplate.content.cloneNode(true)
+    const elTopCardImg = elTopCard.querySelector("[data-card-img]")
+    const elTopCardRating = elTopCard.querySelector("[data-card-rating]")
+
+    document.querySelector("[data-top-title]").textContent = "TOP MOVIES"
+    elTopCard.querySelector("[data-modal-open]").dataset.movieId = movie.id
+    elTopCardImg.src = `${IMG_URL}${movie.poster_path}`
+    elTopCardImg.alt = movie.title
+    elTopCardRating.textContent = movie.vote_average
+    elTopCard.querySelector("[data-card-title]").textContent = movie.title
+
+    // Rating border color
+    if (movie.vote_average < 6) {
+      elTopCardRating.style.borderColor = "#d91200"
+    } else if (movie.vote_average < 7) {
+      elTopCardRating.style.borderColor = "#ff8000"
+    } else if (movie.vote_average < 8) {
+      elTopCardRating.style.borderColor = "	#ffea00"
+    } else if (movie.vote_average <= 10) {
+      elTopCardRating.style.borderColor = "#32cd32"
+    }
+
+    elTopWrapper.appendChild(elTopCard)
   });
 }
 
