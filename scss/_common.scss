@@ -178,6 +178,7 @@ body {
   }
 }
 
+/* TO DOWN ANIM ARROW */
 .to-down {
   position: absolute;
   z-index: 4;
@@ -217,4 +218,10 @@ body {
   100% {
     bottom: 70px;
   }
+}
+
+/* SWIPER */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
 }

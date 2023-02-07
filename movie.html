@@ -10,6 +10,10 @@
     <!-- <link rel="shortcut icon" href="images/"> -->
 
     <!-- Stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/main.css" />
   </head>
@@ -74,6 +78,16 @@
         </div>
       </section>
       <!-- /TOP BANNER -->
+
+      <!-- ACTORS -->
+      <section class="casts swiper" id="casts">
+        <h2 class="casts__title movie__title" data-casts-title></h2>
+        <div class="swiper-wrapper" data-casts-wrapper></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-scrollbar"></div>
+      </section>
+      <!-- /ACTORS -->
     </main>
     <!-- /MAIN CONTENT -->
 
@@ -93,6 +107,24 @@
     </header>
     <!-- /FOOTER -->
 
+    <!-- TEMPLATE -->
+    <template data-casts-template>
+      <div class="swiper-slide" data-swiper-autoplay="2000">
+        <div class="casts-card">
+          <div class="casts-card__img-wrapper">
+            <img class="casts-card__img" width="318" height="477" data-casts-img />
+          </div>
+          <div class="casts-card__content">
+            <h3 class="casts-card__name" data-casts-name>Johnny Depp</h3>
+            <p class="casts-card__character" data-casts-character>
+              Jack Sparrow
+            </p>
+          </div>
+        </div>
+      </div>
+    </template>
+    <!-- /TEMPLATE -->
+
     <!-- LOADER -->
     <div class="loader hidden" data-loader>
       <img class="loader__img" src="images/spinner.svg" alt="loader" />
@@ -100,6 +132,7 @@
     <!-- /LOADER -->
 
     <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/movie.js"></script>
   </body>

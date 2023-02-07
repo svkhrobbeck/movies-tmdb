@@ -192,6 +192,7 @@ body {
   }
 }
 
+/* TO DOWN ANIM ARROW */
 .to-down {
   position: absolute;
   z-index: 4;
@@ -228,6 +229,12 @@ body {
     bottom: 70px;
   }
 }
+/* SWIPER */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
 /* CONTAINER */
 .container {
   width: 100%;
@@ -611,6 +618,16 @@ body {
   position: absolute;
   inset: 0;
   z-index: 3;
+}
+
+/* CASTS */
+.casts-card {
+  max-width: 318px;
+}
+
+.casts-card__img {
+  width: 100%;
+  height: auto;
 }
 
 .site-footer {
