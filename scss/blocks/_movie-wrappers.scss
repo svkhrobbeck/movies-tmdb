@@ -30,8 +30,26 @@
   gap: 30px;
   row-gap: 50px;
   justify-content: center;
+  margin-bottom: 50px;
 }
 
+.movie__load {
+  display: flex;
+  justify-content: center;
+}
+
+.movie__load-btn {
+  border: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #2e2a2a;
+  color: #fff;
+}
+
+
+/* CARD */
 .card-popular {
   max-width: 300px;
   width: 100%;
@@ -66,7 +84,12 @@
 
 .card-popular__img {
   width: 100%;
-  height: auto;
+  height: 450px;
+  object-fit: cover;
+
+  @media only screen and (max-width: $mobile) {
+    height: auto;
+  }
 }
 
 .card-popular__rating-badge {

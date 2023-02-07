@@ -5,32 +5,34 @@ const BG_URL = "https://image.tmdb.org/t/p/w1280"
 
 const elTopBannerWrapper = document.querySelector("[data-top-banner-wrapper]")
 const elPopularWrapper = document.querySelector("[data-popular-wrapper]")
+const elPopularLoadBtn = document.querySelector("[data-popular-load-btn]")
 const elTopWrapper = document.querySelector("[data-top-wrapper]")
+const elTopLoadBtn = document.querySelector("[data-top-load-btn]")
 const elCardTemplate = document.querySelector("[data-card-template]")
 const elLoader = document.querySelector("[data-loader]")
 
 // Get data
-async function getData(key) {
+async function getData(key, pagePopular = 1, pageTop = 1) {
   loader(true)
-  const response = await fetch(`${BASE_API}popular?api_key=${key}&language=en-US&page=1`)
+  const response = await fetch(`${BASE_API}popular?api_key=${key}&language=en-US&page=${pagePopular}`)
   const data = await response.json()
 
-  const responseTop = await fetch(`${BASE_API}top_rated?api_key=${key}&language=en-US&page=1`)
+  const responseTop = await fetch(`${BASE_API}top_rated?api_key=${key}&language=en-US&page=${pageTop}`)
   const dataTop = await responseTop.json()
   loader(false)
 
   renderTopBanner(data.results)
   renderPopularMovies(data.results)
+  renderPopularLoad(data.total_pages, pagePopular)
   renderTopMovies(dataTop.results)
+  renderTopLoad(data.total_pages, pageTop)
 }
 getData(API_KEY)
 
 // Get movie video data
 async function getMovieVideo(id) {
-  loader(true)
   const response = await fetch(`${BASE_API}${id}/videos?api_key=${API_KEY}`)
   const data = await response.json()
-  loader(false)
 
   return data.results
 }
@@ -83,6 +85,12 @@ function renderPopularMovies(movies) {
   });
 }
 
+// // Render popular load
+function renderPopularLoad(totalPages, page) {
+  elPopularLoadBtn.dataset.movieTotalPage = totalPages
+  elPopularLoadBtn.dataset.moviePage = page
+}
+
 // Render top
 function renderTopMovies(movies) {
   elTopWrapper.innerHTML = ""
@@ -114,21 +122,49 @@ function renderTopMovies(movies) {
   });
 }
 
+// // Render top load
+function renderTopLoad(totalPages, page) {
+  elTopLoadBtn.dataset.movieTotalPage = totalPages
+  elTopLoadBtn.dataset.moviePage = page
+}
+
+
 
 // Click Document
 document.addEventListener("click", (evt) => {
   onModalOpenClick(evt)
   onModalCloseClick(evt)
   onModalOutsideClick(evt)
+  onPopularLoadClick(evt)
+  onTopLoadClick(evt)
 })
 
 // Modal open and fill
-function onModalOpenClick(evt) {
+async function onModalOpenClick(evt) {
   const elTarget = evt.target.closest("[data-modal-open]")
 
   if (!elTarget) return
   const elSelector = elTarget.dataset.modalOpen
   const elModal = document.querySelector(elSelector)
+
+  // Fill Modal
+  const id = elTarget.dataset.movieId
+  await getMovieVideo(id).then(data => {
+    const randomNum = Math.trunc(Math.random() * data.length)
+    const movie = data[randomNum]
+
+    const elModalVideo = document.querySelector("[data-modal-video]")
+
+    elModalVideo.src = `https://www.youtube.com/embed/${movie.key}`
+    elModalVideo.setAttribute("title", `${movie.name}`)
+  })
+  await getMovieData(id).then(movie => {
+    const elModalTitle = document.querySelector("[data-modal-title]")
+    const elModalDesc = document.querySelector("[data-modal-desc]")
+
+    elModalTitle.textContent = movie.title
+    elModalDesc.textContent = movie.overview
+  })
 
   // Close Modal Escape
   document.addEventListener("keydown", (evt) => {
@@ -138,26 +174,6 @@ function onModalOpenClick(evt) {
   })
 
   elModal.classList.add("show")
-
-
-  // Fill Modal
-  const id = elTarget.dataset.movieId
-  getMovieVideo(id).then(data => {
-    const randomNum = Math.trunc(Math.random() * data.length)
-    const movie = data[randomNum]
-
-    const elModalVideo = document.querySelector("[data-modal-video]")
-
-    elModalVideo.src = `https://www.youtube.com/embed/${movie.key}`
-    elModalVideo.setAttribute("title", `${movie.name}`)
-  })
-  getMovieData(id).then(movie => {
-    const elModalTitle = document.querySelector("[data-modal-title]")
-    const elModalDesc = document.querySelector("[data-modal-desc]")
-
-    elModalTitle.textContent = movie.title
-    elModalDesc.textContent = movie.overview
-  })
 }
 // Modal close
 function onModalCloseClick(evt) {
@@ -173,6 +189,57 @@ function onModalOutsideClick(evt) {
 
   if (!elTarget.matches("[data-modal]")) return
   elTarget.classList.remove("show")
+}
+
+// elPopularLoadBtn click
+function onPopularLoadClick(evt) {
+  const elTarget = evt.target.closest("[data-popular-load-btn]")
+
+  if (!elTarget) return
+
+  const totalPages = elTarget.dataset.movieTotalPage
+  let page = +elTarget.dataset.moviePage
+  page++
+
+  if (page === totalPages) {
+    page = 1
+  }
+
+  getData(API_KEY, page)
+}
+
+// elPopularLoadBtn click
+function onPopularLoadClick(evt) {
+  const elTarget = evt.target.closest("[data-popular-load-btn]")
+
+  if (!elTarget) return
+
+  const totalPages = elTarget.dataset.movieTotalPage
+  let page = +elTarget.dataset.moviePage
+  page++
+
+  if (page === totalPages) {
+    page = 1
+  }
+
+  getData(API_KEY, page)
+}
+
+// elTopLoadBtn click
+function onTopLoadClick(evt) {
+  const elTarget = evt.target.closest("[data-top-load-btn]")
+
+  if (!elTarget) return
+
+  const totalPages = elTarget.dataset.movieTotalPage
+  let page = +elTarget.dataset.moviePage
+  page++
+
+  if (page === totalPages) {
+    page = 1
+  }
+
+  getData(API_KEY, elPopularLoadBtn.dataset.moviePage, page)
 }
 
 // Scroll logic
