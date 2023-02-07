@@ -95,8 +95,7 @@ body {
 .top-banner {
   position: relative;
   background: no-repeat center / cover;
-  height: calc(100vh - 107px);
-  margin-bottom: 100px;
+  height: 100vh;
   transition: height 0.5s ease;
 
   &::before {
@@ -105,14 +104,6 @@ body {
     z-index: 1;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  @media only screen and (max-width: $tablet) {
-    height: calc(100vh - 82px);
-  }
-
-  @media only screen and (max-width: $mobile) {
-    height: calc(100vh - 63px);
   }
 }
 

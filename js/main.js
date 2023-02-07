@@ -3,6 +3,7 @@ const BASE_API = "https://api.themoviedb.org/3/movie/"
 const IMG_URL = "https://image.tmdb.org/t/p/w500"
 const BG_URL = "https://image.tmdb.org/t/p/w1280"
 
+const ElSiteHeader = document.querySelector("[data-site-header]")
 const elTopBannerWrapper = document.querySelector("[data-top-banner-wrapper]")
 const elPopularWrapper = document.querySelector("[data-popular-wrapper]")
 const elPopularLoadBtn = document.querySelector("[data-popular-load-btn]")
@@ -18,13 +19,18 @@ document.addEventListener("scroll", (e) => {
   } else {
     document.querySelector("[data-to-down]").style.opacity = "1"
   }
+  ElSiteHeader.classList.toggle("fixed", window.scrollY > 0)
 })
 
 // Loader
 function loader(state) {
   if (state) {
     elLoader.classList.remove("hidden")
-  } else {
-    elLoader.classList.add("hidden")
+  elPopularLoadBtn.classList.add("d-none")
+  elTopLoadBtn.classList.add("d-none")
+} else {
+  elLoader.classList.add("hidden")
+  elPopularLoadBtn.classList.remove("d-none")
+  elTopLoadBtn.classList.remove("d-none")
   }
 }
