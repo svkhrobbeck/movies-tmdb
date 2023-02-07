@@ -556,6 +556,21 @@ body {
   justify-content: center;
   margin-bottom: 50px;
 }
+@media only screen and (max-width: 992px) {
+  .movie__wrapper {
+    gap: 25px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .movie__wrapper {
+    gap: 20px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .movie__wrapper {
+    gap: 15px;
+  }
+}
 
 .movie__load {
   display: flex;
@@ -617,7 +632,7 @@ body {
 }
 @media only screen and (max-width: 576px) {
   .card-popular {
-    max-width: 140px;
+    max-width: 157px;
   }
 }
 
