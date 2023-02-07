@@ -35,7 +35,6 @@ function renderTopBanner(movie) {
 // Render casts
 function renderCasts(casts) {
   elCastsWrapper.innerHTML = ""
-  console.log(casts);
 
   document.querySelector("[data-casts-title]").textContent = "CASTS"
   casts.forEach(cast => {
