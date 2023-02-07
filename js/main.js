@@ -128,8 +128,6 @@ function renderTopLoad(totalPages, page) {
   elTopLoadBtn.dataset.moviePage = page
 }
 
-
-
 // Click Document
 document.addEventListener("click", (evt) => {
   onModalOpenClick(evt)
