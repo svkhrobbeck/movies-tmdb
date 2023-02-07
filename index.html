@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/main.css" />
   </head>
 
-  <body>
+  <body id="home">
     <!-- HEADER -->
     <header class="site-header">
       <div class="container site-header__container">
@@ -27,6 +27,19 @@
             height="52"
           />
         </a>
+        <nav class="sitenav">
+          <ul class="sitenav__list">
+            <li class="sitenav__item">
+              <a class="sitenav__link" href="#home">Home</a>
+            </li>
+            <li class="sitenav__item">
+              <a class="sitenav__link" href="#popular">Popular</a>
+            </li>
+            <li class="sitenav__item">
+              <a class="sitenav__link" href="#"></a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
     <!-- /HEADER -->
@@ -52,7 +65,7 @@
       <!-- /TOP BANNER -->
 
       <!-- POPULAR -->
-      <section class="popular">
+      <section class="popular" id="popular">
         <h2 class="popular__title" data-popular-title></h2>
         <div class="container popular__wrapper" data-popular-wrapper></div>
       </section>

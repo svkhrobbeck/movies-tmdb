@@ -424,6 +424,18 @@ body {
   display: none;
 }
 
+.loader__img {
+  width: 200px;
+  height: 200px;
+}
+@media only screen and (max-width: 768px) {
+  .loader__img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* HEADER */
 .site-header {
   background-color: #171717;
   padding: 28px 0;
@@ -437,6 +449,24 @@ body {
   .site-header {
     padding: 15px 0;
   }
+}
+
+.site-header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* SITENAV */
+.sitenav__list {
+  display: flex;
+  gap: 30px;
+  text-transform: uppercase;
+}
+
+.sitenav__link {
+  font-weight: 500;
+  color: #fff;
 }
 
 /* POPULAR */

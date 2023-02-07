@@ -1,3 +1,4 @@
+/* HEADER */
 .site-header {
   background-color: #171717;
   padding: 28px 0;
@@ -9,4 +10,22 @@
   @media screen and (max-width: $mobile) {
     padding: 15px 0;
   }
+}
+
+.site-header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* SITENAV */
+.sitenav__list {
+  display: flex;
+  gap: 30px;
+  text-transform: uppercase;
+}
+
+.sitenav__link {
+  font-weight: 500;
+  color: #fff;
 }

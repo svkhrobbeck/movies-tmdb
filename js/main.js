@@ -56,7 +56,7 @@ function renderPopularMovies(movies) {
     const elPopularCardImg = elPopularCard.querySelector("[data-popular-img]")
     const elPopularCardRating = elPopularCard.querySelector("[data-popular-rating]")
 
-    document.querySelector("[data-popular-title]").textContent = "MOVIES"
+    document.querySelector("[data-popular-title]").textContent = "POPULAR MOVIES"
     elPopularCard.querySelector("[data-modal-open]").dataset.movieId = movie.id
     elPopularCardImg.src = `${IMG_URL}${movie.poster_path}`
     elPopularCardImg.alt = movie.title
@@ -86,7 +86,7 @@ document.addEventListener("click", (evt) => {
   onModalOutsideClick(evt)
 })
 
-// Modal open
+// Modal open and fill
 function onModalOpenClick(evt) {
   const elTarget = evt.target.closest("[data-modal-open]")
 
