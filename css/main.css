@@ -555,6 +555,7 @@ body {
   row-gap: 50px;
   justify-content: center;
   margin-bottom: 50px;
+  transition: gap 0.5s ease;
 }
 @media only screen and (max-width: 992px) {
   .movie__wrapper {
@@ -599,6 +600,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
+  transition: max-width 0.5s ease;
 }
 .card-popular::before {
   content: "";
