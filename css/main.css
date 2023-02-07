@@ -208,8 +208,7 @@ body {
   z-index: 4;
   left: 50%;
   transform: translate(-50%);
-  -webkit-animation: down-anim 2s infinite;
-          animation: down-anim 2s infinite;
+  animation: down-anim 2s infinite;
   transition: bottom 0.5s ease, opacity 0.5s ease;
 }
 .to-down svg {
@@ -220,24 +219,6 @@ body {
   .to-down svg {
     width: 23px;
     height: 30px;
-  }
-}
-
-@-webkit-keyframes down-anim {
-  0% {
-    bottom: 70px;
-  }
-  25% {
-    bottom: 55px;
-  }
-  50% {
-    bottom: 70px;
-  }
-  75% {
-    bottom: 55px;
-  }
-  100% {
-    bottom: 70px;
   }
 }
 
@@ -261,7 +242,7 @@ body {
 /* CONTAINER */
 .container {
   width: 100%;
-  max-width: 1330px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -473,7 +454,6 @@ body {
 .popular, .top {
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
 .popular:not(:last-child), .top:not(:last-child) {
@@ -528,7 +508,7 @@ body {
 
 /* CARD */
 .card-popular {
-  max-width: 300px;
+  max-width: 213px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -557,7 +537,7 @@ body {
 
 .card-popular__img {
   width: 100%;
-  height: 450px;
+  height: 350px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -599,17 +579,33 @@ body {
 }
 
 .card-popular__title {
-  font-size: 18px;
+  font-size: 17px;
   position: absolute;
   left: 50%;
-  white-space: nowrap;
+  width: 100%;
   transform: translateX(-50%);
   text-align: center;
   z-index: 2;
   bottom: 20px;
   color: #fff;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease, font-size 0.5s ease;
+}
+@media only screen and (max-width: 768px) {
+  .card-popular__title {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .card-popular__title {
+    font-size: 15px;
+  }
+}
+
+.card-popular__link {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
 }
 
 .site-footer {

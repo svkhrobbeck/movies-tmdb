@@ -54,11 +54,22 @@
             <p class="top-banner__desc" data-top-banner-desc></p>
           </div>
           <span class="to-down" data-to-down>
-            <svg width="34" height="45" viewBox="0 0 92 118" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M80 61L45.656 95.344L11.312 61L0 72.312L45.656 117.968L91.312 72.312L80 61Z" fill="white"/>
-              <path d="M80 0L45.656 34.344L11.312 0L0 11.312L45.656 56.968L91.312 11.312L80 0Z" fill="white"/>
-              </svg>
-              
+            <svg
+              width="34"
+              height="45"
+              viewBox="0 0 92 118"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M80 61L45.656 95.344L11.312 61L0 72.312L45.656 117.968L91.312 72.312L80 61Z"
+                fill="white"
+              />
+              <path
+                d="M80 0L45.656 34.344L11.312 0L0 11.312L45.656 56.968L91.312 11.312L80 0Z"
+                fill="white"
+              />
+            </svg>
           </span>
         </div>
       </section>
@@ -67,24 +78,32 @@
       <!-- POPULAR -->
       <section class="popular" id="popular">
         <h2 class="popular__title movie__title" data-popular-title></h2>
-        <div class="container popular__wrapper movie__wrapper" data-popular-wrapper></div>
+        <div
+          class="container popular__wrapper movie__wrapper"
+          data-popular-wrapper
+        ></div>
         <div class="container movie__load">
-          <button class="movie__load-btn" type="button" data-popular-load-btn>Load More</button>
-        </div> 
+          <button class="movie__load-btn" type="button" data-popular-load-btn>
+            Load More
+          </button>
+        </div>
       </section>
       <!-- /POPULAR -->
 
       <!-- TOP -->
       <section class="top" id="top">
         <h2 class="top__title movie__title" data-top-title></h2>
-        <div class="container top__wrapper movie__wrapper" data-top-wrapper></div>
+        <div
+          class="container top__wrapper movie__wrapper"
+          data-top-wrapper
+        ></div>
         <div class="container movie__load">
-          <button class="movie__load-btn" type="button" data-top-load-btn>Load More</button>
-        </div> 
+          <button class="movie__load-btn" type="button" data-top-load-btn>
+            Load More
+          </button>
+        </div>
       </section>
       <!-- /TOP -->
-
-
     </main>
     <!-- /MAIN CONTENT -->
 
@@ -105,7 +124,7 @@
     <!-- /FOOTER -->
 
     <!-- MODAL -->
-    <div class="modal" id="modal" data-modal>
+    <!-- <div class="modal" id="modal" data-modal>
       <div class="modal__inner">
         <div class="modal__inner-top">
           <button class="modal__close" type="button" data-modal-close>
@@ -127,42 +146,28 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- /MODAL -->
 
     <!-- TEMPLATE POPULAR -->
     <template data-card-template>
       <div class="popular__card card-popular">
-        <img
-          class="card-popular__img"
-          width="300"
-          height="450"
-          data-card-img
-        />
+        <img class="card-popular__img" width="250" height="375" data-card-img />
         <span class="card-popular__rating-badge" data-card-rating></span>
-        <button
-          class="card-popular__btn"
-          type="button"
-          data-modal-open="#modal"
-        >
-          <img
-            class="card-popular__youtube-logo"
-            src="images/logo-youtube.svg"
-            alt="logo youtube"
-          />
-        </button>
         <h2 class="card-popular__title" data-card-title></h2>
+        <a class="card-popular__link" href="" data-card-link></a>
       </div>
     </template>
     <!-- /TEMPLATE POPULAR -->
 
     <!-- LOADER -->
     <div class="loader hidden" data-loader>
-      <img class="loader__img" src="images/spinner.svg" alt="loader">
+      <img class="loader__img" src="images/spinner.svg" alt="loader" />
     </div>
     <!-- /LOADER -->
 
     <!-- SCRIPTS -->
     <script src="js/main.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>

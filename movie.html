@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movies App</title>
+
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" href="images/"> -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body id="home">
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="container site-header__container">
+        <a href="/" class="logo">
+          <img
+            class="logo__img"
+            src="images/logo.svg"
+            alt="MovieDB"
+            width="110"
+            height="52"
+          />
+        </a>
+        <nav class="sitenav">
+          <ul class="sitenav__list">
+            <li class="sitenav__item">
+              <a class="sitenav__link" href="#home">Home</a>
+            </li>
+            <li class="sitenav__item">
+              <a class="sitenav__link" href="#popular">Popular</a>
+            </li>
+            <li class="sitenav__item">
+              <a class="sitenav__link" href="#top">Top</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- /HEADER -->
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <!-- TOP BANNER -->
+      <section class="top-banner" data-top-banner-wrapper>
+        <div class="container top-banner__inner">
+          <div class="top-banner__content">
+            <h2 class="top-banner__title" data-top-banner-title></h2>
+            <p class="top-banner__desc" data-top-banner-desc></p>
+          </div>
+          <span class="to-down" data-to-down>
+            <svg width="34" height="45" viewBox="0 0 92 118" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M80 61L45.656 95.344L11.312 61L0 72.312L45.656 117.968L91.312 72.312L80 61Z" fill="white"/>
+              <path d="M80 0L45.656 34.344L11.312 0L0 11.312L45.656 56.968L91.312 11.312L80 0Z" fill="white"/>
+              </svg>
+              
+          </span>
+        </div>
+      </section>
+      <!-- /TOP BANNER -->
+    </main>
+    <!-- /MAIN CONTENT -->
+
+    <!-- FOOTER -->
+    <header class="site-footer">
+      <div class="container site-footer__container">
+        <a href="/" class="logo">
+          <img
+            class="logo__img"
+            src="images/logo.svg"
+            alt="MovieDB"
+            width="110"
+            height="52"
+          />
+        </a>
+      </div>
+    </header>
+    <!-- /FOOTER -->
+
+    <!-- LOADER -->
+    <div class="loader hidden" data-loader>
+      <img class="loader__img" src="images/spinner.svg" alt="loader">
+    </div>
+    <!-- /LOADER -->
+
+    <!-- SCRIPTS -->
+    <script src="js/main.js"></script>
+    <script src="js/movie.js"></script>
+  </body>
+</html>
