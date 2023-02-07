@@ -15,18 +15,18 @@ const elLoader = document.querySelector("[data-loader]")
 // Get data
 async function getData(key, pagePopular = 1, pageTop = 1) {
   loader(true)
-  const response = await fetch(`${BASE_API}popular?api_key=${key}&language=en-US&page=${pagePopular}`)
+  const response = await fetch(`${BASE_API}popular?api_key=${key}`)
   const data = await response.json()
 
-  const responseTop = await fetch(`${BASE_API}top_rated?api_key=${key}&language=en-US&page=${pageTop}`)
+  const responseTop = await fetch(`${BASE_API}top_rated?api_key=${key}`)
   const dataTop = await responseTop.json()
   loader(false)
 
   renderTopBanner(data.results)
   renderPopularMovies(data.results)
-  renderPopularLoad(data.total_pages, pagePopular)
+  // renderPopularLoad(data.total_pages, pagePopular)
   renderTopMovies(dataTop.results)
-  renderTopLoad(data.total_pages, pageTop)
+  // renderTopLoad(data.total_pages, pageTop)
 }
 getData(API_KEY)
 
@@ -87,10 +87,10 @@ function renderPopularMovies(movies) {
 }
 
 // // Render popular load
-function renderPopularLoad(totalPages, page) {
-  elPopularLoadBtn.dataset.movieTotalPage = totalPages
-  elPopularLoadBtn.dataset.moviePage = page
-}
+// function renderPopularLoad(totalPages, page) {
+//   elPopularLoadBtn.dataset.movieTotalPage = totalPages
+//   elPopularLoadBtn.dataset.moviePage = page
+// }
 
 // Render top
 function renderTopMovies(movies) {
@@ -123,11 +123,11 @@ function renderTopMovies(movies) {
   });
 }
 
-// // Render top load
-function renderTopLoad(totalPages, page) {
-  elTopLoadBtn.dataset.movieTotalPage = totalPages
-  elTopLoadBtn.dataset.moviePage = page
-}
+// Render top load
+// function renderTopLoad(totalPages, page) {
+//   elTopLoadBtn.dataset.movieTotalPage = totalPages
+//   elTopLoadBtn.dataset.moviePage = page
+// }
 
 // Click Document
 document.addEventListener("click", (evt) => {
@@ -190,39 +190,39 @@ function onModalOutsideClick(evt) {
   elTarget.classList.remove("show")
 }
 
-// elPopularLoadBtn click
-function onPopularLoadClick(evt) {
-  const elTarget = evt.target.closest("[data-popular-load-btn]")
+// // elPopularLoadBtn click
+// function onPopularLoadClick(evt) {
+//   const elTarget = evt.target.closest("[data-popular-load-btn]")
 
-  if (!elTarget) return
+//   if (!elTarget) return
 
-  const totalPages = elTarget.dataset.movieTotalPage
-  let page = +elTarget.dataset.moviePage
-  page++
+//   const totalPages = elTarget.dataset.movieTotalPage
+//   let page = +elTarget.dataset.moviePage
+//   page++
 
-  if (page === totalPages) {
-    page = 1
-  }
+//   if (page === totalPages) {
+//     page = 1
+//   }
 
-  getData(API_KEY, page)
-}
+//   getData(API_KEY, page)
+// }
 
-// elPopularLoadBtn click
-function onPopularLoadClick(evt) {
-  const elTarget = evt.target.closest("[data-popular-load-btn]")
+// // elPopularLoadBtn click
+// function onPopularLoadClick(evt) {
+//   const elTarget = evt.target.closest("[data-popular-load-btn]")
 
-  if (!elTarget) return
+//   if (!elTarget) return
 
-  const totalPages = elTarget.dataset.movieTotalPage
-  let page = +elTarget.dataset.moviePage
-  page++
+//   const totalPages = elTarget.dataset.movieTotalPage
+//   let page = +elTarget.dataset.moviePage
+//   page++
 
-  if (page === totalPages) {
-    page = 1
-  }
+//   if (page === totalPages) {
+//     page = 1
+//   }
 
-  getData(API_KEY, page)
-}
+//   getData(API_KEY, page)
+// }
 
 // elTopLoadBtn click
 function onTopLoadClick(evt) {
