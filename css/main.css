@@ -595,13 +595,18 @@ body {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 768px) {
   .card-popular::before {
-    display: none;
+    transform: scale(0);
   }
 }
 .card-popular:hover::before {
   opacity: 1;
+}
+@media only screen and (max-width: 768px) {
+  .card-popular:hover::before {
+    opacity: 0;
+  }
 }
 .card-popular:hover .card-popular__title {
   opacity: 1;

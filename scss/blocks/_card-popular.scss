@@ -16,13 +16,17 @@
     opacity: 0;
     transition: opacity 0.3s ease;
 
-    @media only screen and (max-width: $mobile) {
-      display: none;
+    @media only screen and (max-width: $tablet) {
+      transform: scale(0);
     }
   }
 
   &:hover::before {
     opacity: 1;
+
+    @media only screen and (max-width: $tablet) {
+      opacity: 0;
+    }
   }
 
   &:hover .card-popular__title {
@@ -70,7 +74,7 @@
   top: 10px;
   left: 10px;
   z-index: 2;
-  transition: font-size .5s ease, width .5s ease;
+  transition: font-size 0.5s ease, width 0.5s ease;
 
   @media only screen and (max-width: $mobile) {
     font-size: 12px;
@@ -101,7 +105,6 @@
   }
   @media only screen and (max-width: $mobile) {
     font-size: 15px;
-
   }
 }
 
