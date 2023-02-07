@@ -71,17 +71,45 @@ body {
   }
 }
 
+/* SITENAV */
+.sitenav__list {
+  display: flex;
+  gap: 30px;
+  text-transform: uppercase;
+}
+
+.sitenav__link {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  transition: font-size .5s ease;
+
+  @media only screen and (max-width: $tablet) {
+    font-size: 15px;
+  }
+
+  @media only screen and (max-width: $mobile) {
+    font-size: 14px;
+  }
+}
+
 /* LOGO */
+.logo {
+  @media only screen and (max-width: $mobile) {
+    margin-right: 20px;
+  }
+}
+
 .logo__img {
-  width: 110px;
-  height: 52px;
+  width: 80px;
+  height: 37px;
 
   @media screen and (max-width: $tablet) {
-    width: 90px;
+    width: 70px;
     height: auto;
   }
   @media screen and (max-width: $mobile) {
-    width: 70px;
+    width: 60px;
   }
 }
 

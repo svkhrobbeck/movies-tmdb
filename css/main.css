@@ -72,20 +72,50 @@ body {
   }
 }
 
+/* SITENAV */
+.sitenav__list {
+  display: flex;
+  gap: 30px;
+  text-transform: uppercase;
+}
+
+.sitenav__link {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  transition: font-size 0.5s ease;
+}
+@media only screen and (max-width: 768px) {
+  .sitenav__link {
+    font-size: 15px;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .sitenav__link {
+    font-size: 14px;
+  }
+}
+
 /* LOGO */
+@media only screen and (max-width: 576px) {
+  .logo {
+    margin-right: 20px;
+  }
+}
+
 .logo__img {
-  width: 110px;
-  height: 52px;
+  width: 80px;
+  height: 37px;
 }
 @media screen and (max-width: 768px) {
   .logo__img {
-    width: 90px;
+    width: 70px;
     height: auto;
   }
 }
 @media screen and (max-width: 576px) {
   .logo__img {
-    width: 70px;
+    width: 60px;
   }
 }
 
@@ -446,18 +476,6 @@ body {
   justify-content: space-between;
 }
 
-/* SITENAV */
-.sitenav__list {
-  display: flex;
-  gap: 30px;
-  text-transform: uppercase;
-}
-
-.sitenav__link {
-  font-weight: 500;
-  color: #fff;
-}
-
 /* POPULAR */
 .popular,
 .top {
@@ -536,6 +554,11 @@ body {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
+@media only screen and (max-width: 576px) {
+  .card-popular::before {
+    display: none;
+  }
+}
 .card-popular:hover::before {
   opacity: 1;
 }
@@ -546,12 +569,22 @@ body {
   opacity: 0.8;
   transform: translate(-50%, -50%) scale(1);
 }
+@media only screen and (max-width: 576px) {
+  .card-popular {
+    max-width: 140px;
+  }
+}
 
 .card-popular__img {
   width: 100%;
   height: 350px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+@media only screen and (max-width: 768px) {
+  .card-popular__img {
+    margin-bottom: 6px;
+  }
 }
 @media only screen and (max-width: 576px) {
   .card-popular__img {
@@ -576,18 +609,14 @@ body {
   top: 10px;
   left: 10px;
   z-index: 2;
+  transition: font-size 0.5s ease, width 0.5s ease;
 }
-
-.card-popular__btn {
-  background-color: transparent;
-  border: none;
-  position: absolute;
-  z-index: 2;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+@media only screen and (max-width: 576px) {
+  .card-popular__rating-badge {
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .card-popular__title {
@@ -606,6 +635,10 @@ body {
 @media only screen and (max-width: 768px) {
   .card-popular__title {
     font-size: 16px;
+    position: static;
+    color: #000;
+    opacity: 1;
+    transform: none;
   }
 }
 @media only screen and (max-width: 576px) {

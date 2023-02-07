@@ -7,7 +7,7 @@
   width: 100%;
   z-index: 10;
   top: 0;
-  transition: padding .5s ease, background-color .5s ease;
+  transition: padding 0.5s ease, background-color 0.5s ease;
 
   &.fixed {
     background-color: rgba(23, 23, 23, 0.6);
@@ -28,16 +28,4 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-/* SITENAV */
-.sitenav__list {
-  display: flex;
-  gap: 30px;
-  text-transform: uppercase;
-}
-
-.sitenav__link {
-  font-weight: 500;
-  color: #fff;
 }

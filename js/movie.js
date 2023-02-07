@@ -47,7 +47,7 @@ function renderCasts(casts) {
 const swiper = new Swiper('.swiper', {
   direction: "horizontal",
   speed: 400,
-  slidesPerView: 1,
+  slidesPerView: 2,
   spaceBetween: 5,
   scrollbar: {
     el: '.swiper-scrollbar',
@@ -61,10 +61,6 @@ const swiper = new Swiper('.swiper', {
     delay: 5000,
   },
   breakpoints: {
-    // when window width is >= 320px
-    400: {
-      slidesPerView: 2,
-    },
     600: {
       slidesPerView: 3,
     },
