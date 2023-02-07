@@ -6,11 +6,14 @@ const BG_URL = "https://image.tmdb.org/t/p/w1280"
 const elTopBannerWrapper = document.querySelector("[data-top-banner-wrapper]")
 const elPopularWrapper = document.querySelector("[data-popular-wrapper]")
 const elPopularTemplate = document.querySelector("[data-popular-template]")
+const elLoader = document.querySelector("[data-loader]")
 
 // Get data
 async function getData(key) {
+  loader(true)
   const response = await fetch(`${BASE_API}popular?api_key=${key}`)
   const data = await response.json()
+  loader(false)
 
   renderTopBanner(data.results)
   renderPopularMovies(data.results)
@@ -19,11 +22,15 @@ getData(API_KEY)
 
 // Get movie video data
 async function getMovieVideo(id) {
+  loader(true)
   const response = await fetch(`${BASE_API}${id}/videos?api_key=${API_KEY}`)
   const data = await response.json()
+  loader(false)
+
   return data.results
 }
 
+// Get Modal Movie Data
 async function getMovieData(id) {
   const resMovie = await fetch(`${BASE_API}${id}?api_key=${API_KEY}`)
   const dataMovie = await resMovie.json()
@@ -49,6 +56,7 @@ function renderPopularMovies(movies) {
     const elPopularCardImg = elPopularCard.querySelector("[data-popular-img]")
     const elPopularCardRating = elPopularCard.querySelector("[data-popular-rating]")
 
+    document.querySelector("[data-popular-title]").textContent = "MOVIES"
     elPopularCard.querySelector("[data-modal-open]").dataset.movieId = movie.id
     elPopularCardImg.src = `${IMG_URL}${movie.poster_path}`
     elPopularCardImg.alt = movie.title
@@ -78,6 +86,7 @@ document.addEventListener("click", (evt) => {
   onModalOutsideClick(evt)
 })
 
+// Modal open
 function onModalOpenClick(evt) {
   const elTarget = evt.target.closest("[data-modal-open]")
 
@@ -102,14 +111,14 @@ function onModalOpenClick(evt) {
     const movie = data[randomNum]
 
     const elModalVideo = document.querySelector("[data-modal-video]")
-    
+
     elModalVideo.src = `https://www.youtube.com/embed/${movie.key}`
     elModalVideo.setAttribute("title", `${movie.name}`)
   })
   getMovieData(id).then(movie => {
     const elModalTitle = document.querySelector("[data-modal-title]")
     const elModalDesc = document.querySelector("[data-modal-desc]")
-    
+
     elModalTitle.textContent = movie.title
     elModalDesc.textContent = movie.overview
   })
@@ -138,3 +147,12 @@ document.addEventListener("scroll", (e) => {
     document.querySelector("[data-to-down]").style.opacity = "1"
   }
 })
+
+// Loader
+function loader(state) {
+  if (state) {
+    elLoader.classList.remove("hidden")
+  } else {
+    elLoader.classList.add("hidden")
+  }
+}

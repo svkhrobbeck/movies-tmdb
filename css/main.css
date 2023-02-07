@@ -271,9 +271,6 @@ body {
   position: fixed;
   z-index: 20;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  -webkit-backdrop-filter: blur(4px);
-          backdrop-filter: blur(4px);
   justify-content: center;
   align-items: flex-start;
   display: flex;
@@ -287,6 +284,9 @@ body {
 }
 .modal.show {
   visibility: visible;
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
 }
 .modal.show .modal__inner {
   top: 50%;
@@ -408,6 +408,19 @@ body {
   .modal__content-desc {
     font-size: 16px;
   }
+}
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loader.hidden {
+  display: none;
 }
 
 .site-header {

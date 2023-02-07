@@ -53,7 +53,7 @@
 
       <!-- POPULAR -->
       <section class="popular">
-        <h2 class="popular__title">MOVIES</h2>
+        <h2 class="popular__title" data-popular-title></h2>
         <div class="container popular__wrapper" data-popular-wrapper></div>
       </section>
       <!-- /POPULAR -->
@@ -127,6 +127,12 @@
       </div>
     </template>
     <!-- /TEMPLATE POPULAR -->
+
+    <!-- LOADER -->
+    <div class="loader hidden" data-loader>
+      <img class="loader__img" src="images/spinner.svg" alt="loader">
+    </div>
+    <!-- /LOADER -->
 
     <!-- SCRIPTS -->
     <script src="js/main.js"></script>
