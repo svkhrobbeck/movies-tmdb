@@ -3,6 +3,7 @@ const BASE_API = "https://api.themoviedb.org/3/movie/"
 const IMG_URL = "https://image.tmdb.org/t/p/w500"
 const BG_URL = "https://image.tmdb.org/t/p/w1280"
 
+// 
 const elTopBannerWrapper = document.querySelector("[data-top-banner-wrapper]")
 const elPopularWrapper = document.querySelector("[data-popular-wrapper]")
 const elPopularLoadBtn = document.querySelector("[data-popular-load-btn]")
@@ -14,10 +15,10 @@ const elLoader = document.querySelector("[data-loader]")
 // Get data
 async function getData(key, pagePopular = 1, pageTop = 1) {
   loader(true)
-  const response = await fetch(`${BASE_API}popular?api_key=${key}&page=${pagePopular}`)
+  const response = await fetch(`${BASE_API}popular?api_key=${key}&language=en-US&page=${pagePopular}`)
   const data = await response.json()
 
-  const responseTop = await fetch(`${BASE_API}top_rated?api_key=${key}&page=${pageTop}`)
+  const responseTop = await fetch(`${BASE_API}top_rated?api_key=${key}&language=en-US&page=${pageTop}`)
   const dataTop = await responseTop.json()
   loader(false)
 
