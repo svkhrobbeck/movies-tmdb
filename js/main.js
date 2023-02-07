@@ -23,9 +23,9 @@ async function getData(pagesOfPopular = 1, pagesOfTop = 1) {
 
   renderTopBanner(data.results)
   renderPopularMovies(data.results)
-  // renderPopularLoad(data.total_pages, pagePopular)
+  renderPopularLoad(data.total_pages, pagesOfPopular)
   renderTopMovies(dataTop.results)
-  // renderTopLoad(data.total_pages, pageTop)
+  renderTopLoad(data.total_pages, pagesOfTop)
 }
 getData()
 
@@ -86,10 +86,11 @@ function renderPopularMovies(movies) {
 }
 
 // // Render popular load
-// function renderPopularLoad(totalPages, page) {
-//   elPopularLoadBtn.dataset.movieTotalPage = totalPages
-//   elPopularLoadBtn.dataset.moviePage = page
-// }
+function renderPopularLoad(totalPages, page) {
+  elPopularLoadBtn.dataset.movieTotalPage = totalPages
+  elPopularLoadBtn.dataset.moviePage = page
+  console.log(page += 1);
+}
 
 // Render top
 function renderTopMovies(movies) {
@@ -123,10 +124,10 @@ function renderTopMovies(movies) {
 }
 
 // Render top load
-// function renderTopLoad(totalPages, page) {
-//   elTopLoadBtn.dataset.movieTotalPage = totalPages
-//   elTopLoadBtn.dataset.moviePage = page
-// }
+function renderTopLoad(totalPages, page) {
+  elTopLoadBtn.dataset.movieTotalPage = totalPages
+  elTopLoadBtn.dataset.moviePage = page
+}
 
 // Click Document
 document.addEventListener("click", (evt) => {
@@ -189,56 +190,36 @@ function onModalOutsideClick(evt) {
   elTarget.classList.remove("show")
 }
 
-// // elPopularLoadBtn click
-// function onPopularLoadClick(evt) {
-//   const elTarget = evt.target.closest("[data-popular-load-btn]")
+// // PopularLoadBtn click
+function onPopularLoadClick(evt) {
+  const elTarget = evt.target.closest("[data-popular-load-btn]")
 
-//   if (!elTarget) return
+  if (!elTarget) return
 
-//   const totalPages = elTarget.dataset.movieTotalPage
-//   let page = +elTarget.dataset.moviePage
-//   page++
+  const totalPages = +elTarget.dataset.movieTotalPage
+  let page = +elTarget.dataset.moviePage
+  page++
 
-//   if (page === totalPages) {
-//     page = 1
-//   }
+  getData(page, +elTopLoadBtn.dataset.moviePage)
+}
 
-//   getData(API_KEY, page)
-// }
 
-// // elPopularLoadBtn click
-// function onPopularLoadClick(evt) {
-//   const elTarget = evt.target.closest("[data-popular-load-btn]")
+// TopLoadBtn click
+function onTopLoadClick(evt) {
+  const elTarget = evt.target.closest("[data-top-load-btn]")
 
-//   if (!elTarget) return
+  if (!elTarget) return
 
-//   const totalPages = elTarget.dataset.movieTotalPage
-//   let page = +elTarget.dataset.moviePage
-//   page++
+  const totalPages = +elTarget.dataset.movieTotalPage
+  let page = +elTarget.dataset.moviePage
+  page++
 
-//   if (page === totalPages) {
-//     page = 1
-//   }
+  if (page === totalPages) {
+    page = 1
+  }
 
-//   getData(API_KEY, page)
-// }
-
-// elTopLoadBtn click
-// function onTopLoadClick(evt) {
-//   const elTarget = evt.target.closest("[data-top-load-btn]")
-
-//   if (!elTarget) return
-
-//   const totalPages = elTarget.dataset.movieTotalPage
-//   let page = +elTarget.dataset.moviePage
-//   page++
-
-//   if (page === totalPages) {
-//     page = 1
-//   }
-
-//   getData(API_KEY)
-// }
+  getData(+elPopularLoadBtn.dataset.moviePage, page)
+}
 
 // Scroll logic
 document.addEventListener("scroll", (e) => {
