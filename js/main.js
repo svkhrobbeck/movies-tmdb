@@ -2,7 +2,6 @@ const API_KEY = "87606660ec9c3fa9d590708457b96f06"
 const BASE_API = "https://api.themoviedb.org/3/movie/"
 const IMG_URL = "https://image.tmdb.org/t/p/w500"
 const BG_URL = "https://image.tmdb.org/t/p/w1280"
-""
 
 const elTopBannerWrapper = document.querySelector("[data-top-banner-wrapper]")
 const elPopularWrapper = document.querySelector("[data-popular-wrapper]")
@@ -13,18 +12,23 @@ async function getData(key) {
   const response = await fetch(`${BASE_API}popular?api_key=${key}`)
   const data = await response.json()
 
-
   renderTopBanner(data.results)
   renderPopularMovies(data.results)
 }
 getData(API_KEY)
-
 
 // Get movie video data
 async function getMovieVideo(id) {
   const response = await fetch(`${BASE_API}${id}/videos?api_key=${API_KEY}`)
   const data = await response.json()
   return data.results
+}
+
+async function getMovieData(id) {
+  const resMovie = await fetch(`${BASE_API}${id}?api_key=${API_KEY}`)
+  const dataMovie = await resMovie.json()
+
+  return dataMovie
 }
 
 // render top banner 
@@ -34,7 +38,6 @@ function renderTopBanner(movies) {
   elTopBannerWrapper.style.backgroundImage = `url(${BG_URL}${movie.backdrop_path})`
   elTopBannerWrapper.querySelector("[data-top-banner-title]").textContent = movie.title
   elTopBannerWrapper.querySelector("[data-top-banner-desc]").textContent = movie.overview
-  console.log(movie);
 }
 
 // Render popular
@@ -96,13 +99,22 @@ function onModalOpenClick(evt) {
   const id = elTarget.dataset.movieId
   getMovieVideo(id).then(data => {
     const randomNum = Math.trunc(Math.random() * data.length)
-    const movieTrailer = data[randomNum]
+    const movie = data[randomNum]
+
     const elModalVideo = document.querySelector("[data-modal-video]")
-    elModalVideo.src = `https://www.youtube.com/embed/${movieTrailer.key}`
-    elModalVideo.setAttribute("title", `${movieTrailer.name}`)
+    
+    elModalVideo.src = `https://www.youtube.com/embed/${movie.key}`
+    elModalVideo.setAttribute("title", `${movie.name}`)
+  })
+  getMovieData(id).then(movie => {
+    const elModalTitle = document.querySelector("[data-modal-title]")
+    const elModalDesc = document.querySelector("[data-modal-desc]")
+    
+    elModalTitle.textContent = movie.title
+    elModalDesc.textContent = movie.overview
   })
 }
-
+// Modal close
 function onModalCloseClick(evt) {
   const elTarget = evt.target.closest("[data-modal-close]")
 
@@ -110,6 +122,7 @@ function onModalCloseClick(evt) {
   elTarget.parentElement.parentElement.parentElement.classList.remove("show")
 }
 
+// Modal outside
 function onModalOutsideClick(evt) {
   const elTarget = evt.target
 
@@ -117,6 +130,7 @@ function onModalOutsideClick(evt) {
   elTarget.classList.remove("show")
 }
 
+// Scroll logic
 document.addEventListener("scroll", (e) => {
   if (window.pageYOffset > 500) {
     document.querySelector("[data-to-down]").style.opacity = "0"

@@ -56,6 +56,7 @@
 
   &:hover .card-popular__btn {
     opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
@@ -90,9 +91,9 @@
   z-index: 2;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0);
   opacity: 0;
-  transition: opacity .5s ease;
+  transition: opacity .5s ease, transform .5s ease;
 }
 
 .card-popular__title {
