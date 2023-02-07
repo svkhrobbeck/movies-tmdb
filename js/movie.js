@@ -5,10 +5,10 @@ const elCastsTemplate = document.querySelector("[data-casts-template]")
 
 // getMovie data
 async function getMovieData(id) {
-  const response = await fetch(`${BASE_API}${id}?api_key=${API_KEY}`)
+  const response = await fetch(`${BASE_API}${id}${API_KEY}`)
   const data = await response.json()
 
-  const responseCasts = await fetch(`${BASE_API}${id}/credits?api_key=${API_KEY}`)
+  const responseCasts = await fetch(`${BASE_API}${id}/credits${API_KEY}`)
   const dataCasts = await responseCasts.json()
 
   renderTopBanner(data)
@@ -20,16 +20,24 @@ getMovieData(movieId)
 
 // render top banner 
 function renderTopBanner(movie) {
-  elTopBannerWrapper.style.backgroundImage = `url(${BG_URL}${movie.backdrop_path})`
-  elTopBannerWrapper.querySelector("[data-top-banner-title]").textContent = movie.title
-  elTopBannerWrapper.querySelector("[data-top-banner-desc]").textContent = movie.overview
+  let html = ""
+  html += `
+  <img class="top-banner__img" src="${BG_URL}${movie.backdrop_path}" alt="${movie.title}" />
+  <div class="top-banner__content">
+    <div class="top-banner__content-inner">
+      <h2 class="top-banner__title" title="${movie.title}" data-top-banner-title>${movie.title}</h2>
+      <p class="top-banner__desc" data-top-banner-desc>${movie.overview}</p>
+    </div>
+  </div>`
+  elTopBannerBgWrapper.innerHTML = html
 }
 
 // Render casts
 function renderCasts(casts) {
   elCastsWrapper.innerHTML = ""
+  console.log(casts);
 
-  document.querySelector("[data-casts-title]").textContent = "Casts"
+  document.querySelector("[data-casts-title]").textContent = "CASTS"
   casts.forEach(cast => {
     const elCastsCard = elCastsTemplate.content.cloneNode(true)
     const elCastsCardImg = elCastsCard.querySelector("[data-casts-img]")

@@ -10,6 +10,10 @@
     <!-- <link rel="shortcut icon" href="images/"> -->
 
     <!-- Stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/main.css" />
   </head>
@@ -33,6 +37,9 @@
               <a class="sitenav__link" href="#home">Home</a>
             </li>
             <li class="sitenav__item">
+              <a class="sitenav__link" href="#upcoming">Upcoming</a>
+            </li>
+            <li class="sitenav__item">
               <a class="sitenav__link" href="#popular">Popular</a>
             </li>
             <li class="sitenav__item">
@@ -47,12 +54,13 @@
     <!-- MAIN CONTENT -->
     <main class="main-content">
       <!-- TOP BANNER -->
-      <section class="top-banner" data-top-banner-wrapper>
+      <section class="swiper top-banner" data-top-banner-wrapper>
+        <div
+          class="swiper-wrapper"
+          data-top-banner-bg
+        ></div>
+        <div class="swiper-scrollbar"></div>
         <div class="container top-banner__inner">
-          <div class="top-banner__content">
-            <h2 class="top-banner__title" data-top-banner-title></h2>
-            <p class="top-banner__desc" data-top-banner-desc></p>
-          </div>
           <span class="to-down" data-to-down>
             <svg
               width="34"
@@ -74,6 +82,21 @@
         </div>
       </section>
       <!-- /TOP BANNER -->
+
+      <!-- UPCOMING -->
+      <section class="upcoming" id="upcoming">
+        <h2 class="upcoming__title movie__title" data-upcoming-title></h2>
+        <div
+          class="container upcoming__wrapper movie__wrapper"
+          data-upcoming-wrapper
+        ></div>
+        <div class="container movie__load">
+          <button class="movie__load-btn" type="button" data-upcoming-load-btn>
+            Load More
+          </button>
+        </div>
+      </section>
+      <!-- /UPCOMING -->
 
       <!-- POPULAR -->
       <section class="popular" id="popular">
@@ -123,32 +146,6 @@
     </header>
     <!-- /FOOTER -->
 
-    <!-- MODAL -->
-    <!-- <div class="modal" id="modal" data-modal>
-      <div class="modal__inner">
-        <div class="modal__inner-top">
-          <button class="modal__close" type="button" data-modal-close>
-            <img src="images/icon-close.svg" alt="" aria-hidden="true" />
-          </button>
-        </div>
-        <div class="modal__content">
-          <iframe
-            class="modal__video"
-            width="400"
-            height="225"
-            data-modal-video
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-          <div class="modal__content-text">
-            <h2 class="modal__content-title" data-modal-title></h2>
-            <p class="modal__content-desc" data-modal-desc></p>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- /MODAL -->
-
     <!-- TEMPLATE POPULAR -->
     <template data-card-template>
       <div class="popular__card card-popular">
@@ -167,6 +164,7 @@
     <!-- /LOADER -->
 
     <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/index.js"></script>
   </body>

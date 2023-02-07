@@ -2,29 +2,76 @@
 // Get data
 async function getData(pagesOfPopular = 1, pagesOfTop = 1) {
   loader(true)
-  let response = await fetch(`${BASE_API}popular?api_key=${API_KEY}&page=${pagesOfPopular}`)
-  let data = await response.json()
+  let responseUpcoming = await fetch(`${BASE_API}upcoming${API_KEY}&page=1`)
+  let dataUpcoming = await responseUpcoming.json()
+  console.log(dataUpcoming);
 
-  let responseTop = await fetch(`${BASE_API}top_rated?api_key=${API_KEY}&page=${pagesOfTop}`)
+  let responsePopular = await fetch(`${BASE_API}popular${API_KEY}&page=${pagesOfPopular}`)
+  let dataPopular = await responsePopular.json()
+
+  let responseTop = await fetch(`${BASE_API}top_rated${API_KEY}&page=${pagesOfTop}`)
   let dataTop = await responseTop.json()
   loader(false)
 
-  renderTopBanner(data.results)
-  renderPopularMovies(data.results)
-  renderPopularLoad(data.total_pages, pagesOfPopular)
+  renderTopBanner(dataUpcoming.results)
+  renderUpcomingMovies(dataUpcoming.results)
+  renderPopularMovies(dataPopular.results)
+  renderPopularLoad(dataPopular.total_pages, pagesOfPopular)
   renderTopMovies(dataTop.results)
-  renderTopLoad(data.total_pages, pagesOfTop)
+  renderTopLoad(dataPopular.total_pages, pagesOfTop)
 }
 getData()
 
-
 // render top banner 
 function renderTopBanner(movies) {
-  const randomNum = Math.trunc(Math.random() * movies.length)
-  const movie = movies[randomNum === 12 ? 11 : randomNum]
-  elTopBannerWrapper.style.backgroundImage = `url(${BG_URL}${movie.backdrop_path})`
-  elTopBannerWrapper.querySelector("[data-top-banner-title]").textContent = movie.title
-  elTopBannerWrapper.querySelector("[data-top-banner-desc]").textContent = movie.overview
+  let html = ""
+
+  movies.forEach(movie => {
+    html += `<div class="swiper-slide" data-swiper-autoplay="4500">
+    <img class="top-banner__img" src="${BG_URL}${movie.backdrop_path}" alt="${movie.title}" />
+    <div class="top-banner__content">
+      <div class="top-banner__content-inner">
+        <h2 class="top-banner__title" title="${movie.title}" data-top-banner-title>${movie.title}</h2>
+        <p class="top-banner__desc" data-top-banner-desc>${movie.overview}</p>
+        <a class="top-banner__link" href="movie.html?id=${movie.id}" data-top-banner-link>Read more...</a>
+      </div>
+    </div>
+    </div>
+          `
+  })
+
+  elTopBannerBgWrapper.innerHTML = html
+}
+
+// Render Upcoming
+function renderUpcomingMovies(movies) {
+  elUpcomingWrapper.innerHTML = ""
+
+  movies.forEach(movie => {
+    const elUpcomingCard = elCardTemplate.content.cloneNode(true)
+    const elUpcomingCardImg = elUpcomingCard.querySelector("[data-card-img]")
+    const elUpcomingCardRating = elUpcomingCard.querySelector("[data-card-rating]")
+
+    document.querySelector("[data-upcoming-title]").textContent = "UPCOMING MOVIES"
+    elUpcomingCardImg.src = `${IMG_URL}${movie.poster_path}`
+    elUpcomingCardImg.alt = movie.title
+    elUpcomingCardRating.textContent = movie.vote_average
+    elUpcomingCard.querySelector("[data-card-title]").textContent = movie.title
+    elUpcomingCard.querySelector("[data-card-link]").href = `movie.html?id=${movie.id}`
+
+    // Rating border color
+    if (movie.vote_average < 6) {
+      elUpcomingCardRating.style.borderColor = "#d91200"
+    } else if (movie.vote_average < 7) {
+      elUpcomingCardRating.style.borderColor = "#ff8000"
+    } else if (movie.vote_average < 8) {
+      elUpcomingCardRating.style.borderColor = "	#ffea00"
+    } else if (movie.vote_average <= 10) {
+      elUpcomingCardRating.style.borderColor = "#32cd32"
+    }
+
+    elUpcomingWrapper.appendChild(elUpcomingCard)
+  });
 }
 
 // Render popular
@@ -138,3 +185,36 @@ function onTopLoadClick(evt) {
 
   getData(+elPopularLoadBtn.dataset.moviePage, page)
 }
+
+// Swiper slider (index)
+const swiper = new Swiper('.swiper', {
+  direction: "horizontal",
+  speed: 400,
+  slidesPerView: 1,
+  spaceBetween: 0,
+  scrollbar: {
+    el: '.swiper-scrollbar',
+    draggable: true,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  autoplay: {
+    delay: 5000,
+  },
+  // breakpoints: {
+  //   600: {
+  //     slidesPerView: 3,
+  //   },
+  //   768: {
+  //     slidesPerView: 4,
+  //   },
+  //   990: {
+  //     slidesPerView: 5,
+  //   },
+  //   1200: {
+  //     slidesPerView: 6,
+  //   }
+  // }
+})
