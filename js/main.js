@@ -224,21 +224,7 @@ function onModalOutsideClick(evt) {
 // }
 
 // elTopLoadBtn click
-function onTopLoadClick(evt) {
-  const elTarget = evt.target.closest("[data-top-load-btn]")
-
-  if (!elTarget) return
-
-  const totalPages = elTarget.dataset.movieTotalPage
-  let page = +elTarget.dataset.moviePage
-  page++
-
-  if (page === totalPages) {
-    page = 1
-  }
-
-  getData(API_KEY, elPopularLoadBtn.dataset.moviePage, page)
-}
+// fa
 
 // Scroll logic
 document.addEventListener("scroll", (e) => {

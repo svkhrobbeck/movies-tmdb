@@ -205,7 +205,7 @@ body {
 
 .to-down {
   position: absolute;
-  z-index: 2;
+  z-index: 4;
   left: 50%;
   transform: translate(-50%);
   -webkit-animation: down-anim 2s infinite;
