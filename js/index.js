@@ -1,14 +1,14 @@
 
 // Get data
-async function getData(pagesOfPopular = 1, pagesOfTop = 1) {
+async function getData(pagesOfUpcoming = 1, pagesOfPopular = 1, pagesOfTop = 1) {
   loader(true)
-  let responseUpcoming = await fetch(`${BASE_API}upcoming${API_KEY}&page=1`)
+  // Upcoming data
+  let responseUpcoming = await fetch(`${BASE_API}upcoming${API_KEY}&page=${pagesOfUpcoming}`)
   let dataUpcoming = await responseUpcoming.json()
-  console.log(dataUpcoming);
-
+  // Popular data
   let responsePopular = await fetch(`${BASE_API}popular${API_KEY}&page=${pagesOfPopular}`)
   let dataPopular = await responsePopular.json()
-
+  // Top data
   let responseTop = await fetch(`${BASE_API}top_rated${API_KEY}&page=${pagesOfTop}`)
   let dataTop = await responseTop.json()
   loader(false)
@@ -16,8 +16,10 @@ async function getData(pagesOfPopular = 1, pagesOfTop = 1) {
   renderTopBanner(dataUpcoming.results)
   renderUpcomingMovies(dataUpcoming.results)
   renderPopularMovies(dataPopular.results)
-  renderPopularLoad(dataPopular.total_pages, pagesOfPopular)
   renderTopMovies(dataTop.results)
+
+  renderUpcomingLoad(dataUpcoming.total_pages, pagesOfUpcoming)
+  renderPopularLoad(dataPopular.total_pages, pagesOfPopular)
   renderTopLoad(dataPopular.total_pages, pagesOfTop)
 }
 getData()
@@ -26,7 +28,8 @@ getData()
 function renderTopBanner(movies) {
   let html = ""
 
-  movies.forEach(movie => {
+  const newMovies = movies.filter(movie => movie.backdrop_path !== null)
+  newMovies.forEach(movie => {
     html += `<div class="swiper-slide" data-swiper-autoplay="4500">
     <img class="top-banner__img" src="${BG_URL}${movie.backdrop_path}" alt="${movie.title}" />
     <div class="top-banner__content">
@@ -105,13 +108,6 @@ function renderPopularMovies(movies) {
   });
 }
 
-// // Render popular load
-function renderPopularLoad(totalPages, page) {
-  elPopularLoadBtn.dataset.movieTotalPage = totalPages
-  elPopularLoadBtn.dataset.moviePage = page
-  console.log(page += 1);
-}
-
 // Render top
 function renderTopMovies(movies) {
   elTopWrapper.innerHTML = ""
@@ -143,6 +139,18 @@ function renderTopMovies(movies) {
   });
 }
 
+// Render upcoming load
+function renderUpcomingLoad(totalPages, page) {
+  elUpcomingLoadBtn.dataset.movieTotalPage = totalPages
+  elUpcomingLoadBtn.dataset.moviePage = page
+}
+
+// Render popular load
+function renderPopularLoad(totalPages, page) {
+  elPopularLoadBtn.dataset.movieTotalPage = totalPages
+  elPopularLoadBtn.dataset.moviePage = page
+}
+
 // Render top load
 function renderTopLoad(totalPages, page) {
   elTopLoadBtn.dataset.movieTotalPage = totalPages
@@ -151,9 +159,23 @@ function renderTopLoad(totalPages, page) {
 
 // Click Document
 document.addEventListener("click", (evt) => {
+  onUpcomingLoadClick(evt)
   onPopularLoadClick(evt)
   onTopLoadClick(evt)
 })
+
+// // UpcomingLoadBtn click
+function onUpcomingLoadClick(evt) {
+  const elTarget = evt.target.closest("[data-upcoming-load-btn]")
+
+  if (!elTarget) return
+
+  const totalPages = +elTarget.dataset.movieTotalPage
+  let page = +elTarget.dataset.moviePage
+  page++
+
+  getData(page, +elPopularLoadBtn.dataset.moviePage, +elTopLoadBtn.dataset.moviePage)
+}
 
 // // PopularLoadBtn click
 function onPopularLoadClick(evt) {
@@ -165,9 +187,8 @@ function onPopularLoadClick(evt) {
   let page = +elTarget.dataset.moviePage
   page++
 
-  getData(page, +elTopLoadBtn.dataset.moviePage)
+  getData(+elUpcomingLoadBtn.dataset.moviePage, page, +elTopLoadBtn.dataset.moviePage)
 }
-
 
 // TopLoadBtn click
 function onTopLoadClick(evt) {
@@ -183,7 +204,7 @@ function onTopLoadClick(evt) {
     page = 1
   }
 
-  getData(+elPopularLoadBtn.dataset.moviePage, page)
+  getData(+elUpcomingLoadBtn.dataset.moviePage, +elPopularLoadBtn.dataset.moviePage, page)
 }
 
 // Swiper slider (index)

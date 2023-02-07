@@ -9,6 +9,7 @@ const elUpcomingWrapper = document.querySelector("[data-upcoming-wrapper]")
 const elPopularWrapper = document.querySelector("[data-popular-wrapper]")
 const elTopWrapper = document.querySelector("[data-top-wrapper]")
 
+const elUpcomingLoadBtn = document.querySelector("[data-upcoming-load-btn]")
 const elPopularLoadBtn = document.querySelector("[data-popular-load-btn]")
 const elTopLoadBtn = document.querySelector("[data-top-load-btn]")
 const elLoader = document.querySelector("[data-loader]")
@@ -29,10 +30,12 @@ document.addEventListener("scroll", (e) => {
 function loader(state) {
   if (state) {
     elLoader.classList.remove("hidden")
+    elUpcomingLoadBtn.classList.add("d-none")
     elPopularLoadBtn.classList.add("d-none")
     elTopLoadBtn.classList.add("d-none")
   } else {
     elLoader.classList.add("hidden")
+    elUpcomingLoadBtn.classList.remove("d-none")
     elPopularLoadBtn.classList.remove("d-none")
     elTopLoadBtn.classList.remove("d-none")
   }
