@@ -17,14 +17,14 @@ async function getData(key) {
   let response = await fetch(`${BASE_API}popular?api_key=${key}`)
   let data = await response.json()
 
-  let responseTop = await fetch(`${BASE_API}top_rated?api_key=${key}`)
-  let dataTop = await responseTop.json()
+  // let responseTop = await fetch(`${BASE_API}top_rated?api_key=${key}`)
+  // let dataTop = await responseTop.json()
   loader(false)
 
   renderTopBanner(data.results)
   renderPopularMovies(data.results)
   // renderPopularLoad(data.total_pages, pagePopular)
-  renderTopMovies(dataTop.results)
+  // renderTopMovies(dataTop.results)
   // renderTopLoad(data.total_pages, pageTop)
 }
 getData(API_KEY)
