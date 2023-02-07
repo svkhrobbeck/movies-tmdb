@@ -12,22 +12,22 @@ const elCardTemplate = document.querySelector("[data-card-template]")
 const elLoader = document.querySelector("[data-loader]")
 
 // Get data
-async function getData(key) {
+async function getData() {
   loader(true)
-  let response = await fetch(`${BASE_API}popular?api_key=${key}`)
+  let response = await fetch(`${BASE_API}popular?api_key=${API_KEY}`)
   let data = await response.json()
 
-  // let responseTop = await fetch(`${BASE_API}top_rated?api_key=${key}`)
-  // let dataTop = await responseTop.json()
+  let responseTop = await fetch(`${BASE_API}top_rated?api_key=${API_KEY}`)
+  let dataTop = await responseTop.json()
   loader(false)
 
   renderTopBanner(data.results)
   renderPopularMovies(data.results)
   // renderPopularLoad(data.total_pages, pagePopular)
-  // renderTopMovies(dataTop.results)
+  renderTopMovies(dataTop.results)
   // renderTopLoad(data.total_pages, pageTop)
 }
-getData(API_KEY)
+getData()
 
 // Get movie video data
 async function getMovieVideo(id) {
@@ -224,7 +224,21 @@ function onModalOutsideClick(evt) {
 // }
 
 // elTopLoadBtn click
-// fa
+// function onTopLoadClick(evt) {
+//   const elTarget = evt.target.closest("[data-top-load-btn]")
+
+//   if (!elTarget) return
+
+//   const totalPages = elTarget.dataset.movieTotalPage
+//   let page = +elTarget.dataset.moviePage
+//   page++
+
+//   if (page === totalPages) {
+//     page = 1
+//   }
+
+//   getData(API_KEY)
+// }
 
 // Scroll logic
 document.addEventListener("scroll", (e) => {
