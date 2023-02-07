@@ -14,11 +14,11 @@ const elLoader = document.querySelector("[data-loader]")
 // Get data
 async function getData(key) {
   loader(true)
-  const response = await fetch(`${BASE_API}popular?api_key=${key}`)
-  const data = await response.json()
+  let response = await fetch(`${BASE_API}popular?api_key=${key}`)
+  let data = await response.json()
 
-  const responseTop = await fetch(`${BASE_API}top_rated?api_key=${key}`)
-  const dataTop = await responseTop.json()
+  let responseTop = await fetch(`${BASE_API}top_rated?api_key=${key}`)
+  let dataTop = await responseTop.json()
   loader(false)
 
   renderTopBanner(data.results)
