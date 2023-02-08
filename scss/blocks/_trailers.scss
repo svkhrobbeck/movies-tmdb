@@ -1,0 +1,27 @@
+// /* CASTS */
+.trailers {
+  padding-top: 70px;
+  user-select: none;
+}
+
+.trailers__title {
+  margin-bottom: 20px;
+}
+
+.trailers-card {
+  max-width: 480px;
+  user-select: none;
+}
+
+.trailers-card__video {
+  width: 100%;
+  height: auto;
+}
+
+// /* SWIPER */
+.trailers {
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+  }
+}

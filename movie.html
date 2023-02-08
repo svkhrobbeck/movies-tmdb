@@ -52,10 +52,7 @@
     <main class="main-content">
       <!-- TOP BANNER -->
       <section class="top-banner" data-top-banner-wrapper>
-        <div
-          class="top-banner__wrapper"
-          data-top-banner-bg
-        ></div>
+        <div class="top-banner__wrapper" data-top-banner-bg></div>
         <div class="container top-banner__inner">
           <span class="to-down" data-to-down>
             <svg
@@ -88,6 +85,16 @@
         <div class="swiper-scrollbar"></div>
       </section>
       <!-- /CASTS -->
+
+      <!-- TRAILERS -->
+      <section class="trailers swiper" id="trailers">
+        <h2 class="trailers__title movie__title" data-trailers-title></h2>
+        <div class="swiper-wrapper" data-trailers-wrapper></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-scrollbar"></div>
+      </section>
+      <!-- /TRAILERS -->
     </main>
     <!-- /MAIN CONTENT -->
 
@@ -107,23 +114,48 @@
     </header>
     <!-- /FOOTER -->
 
-    <!-- TEMPLATE -->
+    <!-- CASTS TEMPLATE -->
     <template data-casts-template>
       <div class="swiper-slide" data-swiper-autoplay="2000">
         <div class="casts-card">
           <div class="casts-card__img-wrapper">
-            <img class="casts-card__img" width="318" height="477" data-casts-img />
+            <img
+              class="casts-card__img"
+              width="318"
+              height="477"
+              data-casts-img
+            />
           </div>
           <div class="casts-card__content">
-            <h3 class="casts-card__name" data-casts-name>Johnny Depp</h3>
-            <p class="casts-card__character" data-casts-character>
-              Jack Sparrow
-            </p>
+            <h3 class="casts-card__name" data-casts-name></h3>
+            <p class="casts-card__character" data-casts-character></p>
           </div>
         </div>
       </div>
     </template>
-    <!-- /TEMPLATE -->
+    <!-- /CASTS TEMPLATE -->
+
+    <!-- TRAILERS TEMPLATE -->
+    <template data-trailers-template>
+      <div class="swiper-slide" data-swiper-autoplay="4000">
+        <div class="trailers-card">
+          <div class="trailers-card__video-wrapper">
+            <iframe
+              class="trailers-card__video"
+              width="480"
+              height="270"
+              src=""
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              data-trailers-trailer
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </template>
+    <!-- /TRAILERS TEMPLATE -->
 
     <!-- LOADER -->
     <div class="loader hidden" data-loader>

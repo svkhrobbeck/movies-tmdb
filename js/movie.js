@@ -1,19 +1,26 @@
 const movieId = new URLSearchParams(window.location.search).get("id")
 
 const elCastsWrapper = document.querySelector("[data-casts-wrapper]")
+const elTrailersWrapper = document.querySelector("[data-trailers-wrapper]")
+
 const elCastsTemplate = document.querySelector("[data-casts-template]")
+const elTrailersTemplate = document.querySelector("[data-trailers-template]")
 
 // getMovie data
 async function getMovieData(id) {
-  const response = await fetch(`${BASE_API}${id}${API_KEY}`)
-  const data = await response.json()
+  const responseMovie = await fetch(`${BASE_API}${id}${API_KEY}`)
+  const dataMovie = await responseMovie.json()
 
   const responseCasts = await fetch(`${BASE_API}${id}/credits${API_KEY}`)
   const dataCasts = await responseCasts.json()
 
-  renderTopBanner(data)
+  const responseTrailers = await fetch(`${BASE_API}${id}/videos${API_KEY}`)
+  const dataTrailers = await responseTrailers.json()
+
+  renderTopBanner(dataMovie)
   renderCasts(dataCasts.cast)
-  document.title = `${data.title}`
+  renderTrailers(dataTrailers.results)
+  document.title = `${dataMovie.title}`
 
 }
 getMovieData(movieId)
@@ -50,11 +57,27 @@ function renderCasts(casts) {
   });
 }
 
+// Render trailers
+function renderTrailers(trailers) {
+  elTrailersWrapper.innerHTML = ""
+  document.querySelector("[data-trailers-title]").textContent = "TRAILERS"
+
+  trailers.forEach(trailer => {
+    const elTrailersCard = elTrailersTemplate.content.cloneNode(true)
+    const elTrailersCardVideo = elTrailersCard.querySelector("[data-trailers-trailer]")
+
+    elTrailersCardVideo.src = `https://www.youtube.com/embed/${trailer.key}`
+    elTrailersCardVideo.title = trailer.name
+
+    elTrailersWrapper.appendChild(elTrailersCard)
+  });
+}
+
 // Swiper slider
 const swiper = new Swiper('.swiper', {
   direction: "horizontal",
   speed: 400,
-  slidesPerView: 2,
+  slidesPerView: 1,
   spaceBetween: 5,
   scrollbar: {
     el: '.swiper-scrollbar',
@@ -68,6 +91,9 @@ const swiper = new Swiper('.swiper', {
     delay: 5000,
   },
   breakpoints: {
+    500: {
+      slidesPerView: 2,
+    },
     600: {
       slidesPerView: 3,
     },

@@ -1,9 +1,16 @@
 /* CASTS */
+.casts {
+  padding-top: 70px;
+}
+
+.casts__title {
+  margin-bottom: 20px;
+}
+
 .casts-card {
   max-width: 318px;
 }
-.casts-card__img-wrapper {
-}
+
 .casts-card__img {
   width: 100%;
   height: auto;
