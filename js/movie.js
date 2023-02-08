@@ -26,7 +26,7 @@ function renderTopBanner(movie) {
   <div class="top-banner__content">
     <div class="top-banner__content-inner">
       <h2 class="top-banner__title" title="${movie.title}" data-top-banner-title>${movie.title}</h2>
-      <p class="top-banner__desc" data-top-banner-desc>${movie.overview}</p>
+      <p class="top-banner__desc top-banner__desc--movie" data-top-banner-desc>${movie.overview}</p>
     </div>
   </div>`
   elTopBannerBgWrapper.innerHTML = html

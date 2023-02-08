@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: max-width .5s ease;
+  transition: max-width 0.5s ease;
 
   &::before {
     content: "";
@@ -86,9 +86,11 @@
 
 .card-popular__title {
   font-size: 17px;
+  font-weight: 500;
   position: absolute;
   left: 50%;
   width: 100%;
+  padding: 0 10px;
   transform: translateX(-50%);
   text-align: center;
   z-index: 2;
