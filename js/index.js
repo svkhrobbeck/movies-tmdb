@@ -33,7 +33,7 @@ function renderTopBanner(movies) {
   const newMovies = movies.filter(movie => movie.backdrop_path !== null)
   movies.forEach(movie => {
     html += `<div class="swiper-slide" data-swiper-autoplay="4500">
-    <img class="top-banner__img" src="${(movie.backdrop_path === null) ? "images/image-not-found.png" : IMG_URL + movie.backdrop_path}" alt="${movie.title}" />
+    <img class="top-banner__img" src="${(movie.backdrop_path === null) ? "images/image-not-found.png" : BG_URL + movie.backdrop_path}" alt="${movie.title}" />
     <div class="top-banner__content">
       <div class="top-banner__content-inner">
         <h2 class="top-banner__title" title="${movie.title}" data-top-banner-title>${movie.title}</h2>
