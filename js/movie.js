@@ -8,14 +8,16 @@ const elTrailersTemplate = document.querySelector("[data-trailers-template]")
 
 // getMovie data
 async function getMovieData(id) {
+  loader(true)
   const responseMovie = await fetch(`${BASE_API}${id}${API_KEY}`)
   const dataMovie = await responseMovie.json()
-
+  
   const responseCasts = await fetch(`${BASE_API}${id}/credits${API_KEY}`)
   const dataCasts = await responseCasts.json()
-
+  
   const responseTrailers = await fetch(`${BASE_API}${id}/videos${API_KEY}`)
   const dataTrailers = await responseTrailers.json()
+  loader(false)
 
   renderTopBanner(dataMovie)
   renderCasts(dataCasts.cast)
@@ -29,7 +31,7 @@ getMovieData(movieId)
 function renderTopBanner(movie) {
   let html = ""
   html += `
-  <img class="top-banner__img" src="${BG_URL}${movie.backdrop_path}" alt="${movie.title}" />
+  <img class="top-banner__img" src="${(movie.backdrop_path === null) ? "images/image-not-found.png" : IMG_URL + movie.backdrop_path}" alt="${movie.title}" />
   <div class="top-banner__content">
     <div class="top-banner__content-inner">
       <h2 class="top-banner__title" title="${movie.title}" data-top-banner-title>${movie.title}</h2>
@@ -62,15 +64,19 @@ function renderTrailers(trailers) {
   elTrailersWrapper.innerHTML = ""
   document.querySelector("[data-trailers-title]").textContent = "TRAILERS"
 
-  trailers.forEach(trailer => {
-    const elTrailersCard = elTrailersTemplate.content.cloneNode(true)
-    const elTrailersCardVideo = elTrailersCard.querySelector("[data-trailers-trailer]")
-
-    elTrailersCardVideo.src = `https://www.youtube.com/embed/${trailer.key}`
-    elTrailersCardVideo.title = trailer.name
-
-    elTrailersWrapper.appendChild(elTrailersCard)
-  });
+  if (trailers.length === 0) {
+    elTrailersWrapper.parentElement.innerHTML += `<p class="alert-text">TRAILERS NOT FOUND</p>`
+  } else {
+    trailers.forEach(trailer => {
+      const elTrailersCard = elTrailersTemplate.content.cloneNode(true)
+      const elTrailersCardVideo = elTrailersCard.querySelector("[data-trailers-trailer]")
+  
+      elTrailersCardVideo.src = `https://www.youtube.com/embed/${trailer.key}`
+      elTrailersCardVideo.title = trailer.name
+  
+      elTrailersWrapper.appendChild(elTrailersCard)
+    });
+  }
 }
 
 // Swiper slider

@@ -2,6 +2,7 @@
 // Get data
 async function getData(pagesOfUpcoming = 1, pagesOfPopular = 1, pagesOfTop = 1) {
   loader(true)
+  buttonsLoad(true)
   // Upcoming data
   let responseUpcoming = await fetch(`${BASE_API}upcoming${API_KEY}&page=${pagesOfUpcoming}`)
   let dataUpcoming = await responseUpcoming.json()
@@ -12,6 +13,7 @@ async function getData(pagesOfUpcoming = 1, pagesOfPopular = 1, pagesOfTop = 1) 
   let responseTop = await fetch(`${BASE_API}top_rated${API_KEY}&page=${pagesOfTop}`)
   let dataTop = await responseTop.json()
   loader(false)
+  buttonsLoad(false)
 
   renderTopBanner(dataUpcoming.results)
   renderUpcomingMovies(dataUpcoming.results)
@@ -29,9 +31,9 @@ function renderTopBanner(movies) {
   let html = ""
 
   const newMovies = movies.filter(movie => movie.backdrop_path !== null)
-  newMovies.forEach(movie => {
+  movies.forEach(movie => {
     html += `<div class="swiper-slide" data-swiper-autoplay="4500">
-    <img class="top-banner__img" src="${BG_URL}${movie.backdrop_path}" alt="${movie.title}" />
+    <img class="top-banner__img" src="${(movie.backdrop_path === null) ? "images/image-not-found.png" : IMG_URL + movie.backdrop_path}" alt="${movie.title}" />
     <div class="top-banner__content">
       <div class="top-banner__content-inner">
         <h2 class="top-banner__title" title="${movie.title}" data-top-banner-title>${movie.title}</h2>
@@ -56,7 +58,7 @@ function renderUpcomingMovies(movies) {
     const elUpcomingCardRating = elUpcomingCard.querySelector("[data-card-rating]")
 
     document.querySelector("[data-upcoming-title]").textContent = "UPCOMING MOVIES"
-    elUpcomingCardImg.src = `${IMG_URL}${movie.poster_path}`
+    elUpcomingCardImg.src = `${(movie.poster_path === null) ? "https://via.placeholder.com/213x350" : IMG_URL + movie.poster_path}`
     elUpcomingCardImg.alt = movie.title
     elUpcomingCardRating.textContent = movie.vote_average
     elUpcomingCard.querySelector("[data-card-title]").textContent = movie.title
@@ -87,7 +89,7 @@ function renderPopularMovies(movies) {
     const elPopularCardRating = elPopularCard.querySelector("[data-card-rating]")
 
     document.querySelector("[data-popular-title]").textContent = "POPULAR MOVIES"
-    elPopularCardImg.src = `${IMG_URL}${movie.poster_path}`
+    elPopularCardImg.src = `${(movie.poster_path === null) ? "https://via.placeholder.com/213x350" : IMG_URL + movie.poster_path}`
     elPopularCardImg.alt = movie.title
     elPopularCardRating.textContent = movie.vote_average
     elPopularCard.querySelector("[data-card-title]").textContent = movie.title
@@ -118,7 +120,7 @@ function renderTopMovies(movies) {
     const elTopCardRating = elTopCard.querySelector("[data-card-rating]")
 
     document.querySelector("[data-top-title]").textContent = "TOP MOVIES"
-    elTopCardImg.src = `${IMG_URL}${movie.poster_path}`
+    elTopCardImg.src = `${(movie.poster_path === null) ? "https://via.placeholder.com/213x350" : IMG_URL + movie.poster_path}`
     elTopCardImg.alt = movie.title
     elTopCardRating.textContent = movie.vote_average
     elTopCard.querySelector("[data-card-title]").textContent = movie.title
@@ -239,3 +241,16 @@ const swiper = new Swiper('.swiper', {
   //   }
   // }
 })
+
+// function button load
+function buttonsLoad(state) {
+  if (state) {
+    elUpcomingLoadBtn.classList.add("d-none")
+    elPopularLoadBtn.classList.add("d-none")
+    elTopLoadBtn.classList.add("d-none")
+  } else {
+    elUpcomingLoadBtn.classList.remove("d-none")
+    elPopularLoadBtn.classList.remove("d-none")
+    elTopLoadBtn.classList.remove("d-none")
+  }
+}

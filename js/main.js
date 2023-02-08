@@ -30,14 +30,9 @@ document.addEventListener("scroll", (e) => {
 function loader(state) {
   if (state) {
     elLoader.classList.remove("hidden")
-    elUpcomingLoadBtn.classList.add("d-none")
-    elPopularLoadBtn.classList.add("d-none")
-    elTopLoadBtn.classList.add("d-none")
+
   } else {
     elLoader.classList.add("hidden")
-    elUpcomingLoadBtn.classList.remove("d-none")
-    elPopularLoadBtn.classList.remove("d-none")
-    elTopLoadBtn.classList.remove("d-none")
   }
 }
 
