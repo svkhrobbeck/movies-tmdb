@@ -14,6 +14,7 @@ const elSearchingWrapper = document.querySelector("[data-searchs-wrapper]");
 const elUpcomingLoadBtn = document.querySelector("[data-upcoming-load-btn]");
 const elPopularLoadBtn = document.querySelector("[data-popular-load-btn]");
 const elTopLoadBtn = document.querySelector("[data-top-load-btn]");
+const elSearchLoadBtn = document.querySelector("[data-search-load-btn]");
 const elLoader = document.querySelector("[data-loader]");
 
 const elCardTemplate = document.querySelector("[data-card-template]");

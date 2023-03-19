@@ -69,6 +69,13 @@ function renderTopBanner(movies) {
 function renderMovieLoad(totalPages, page, btn) {
   btn.dataset.movieTotalPage = totalPages;
   btn.dataset.moviePage = page;
+
+  if (btn === elSearchLoadBtn) {
+    if (!btn.disabled) {
+      btn.textContent = "Load More";
+    }
+    btn.disabled = false;
+  }
 }
 
 // Click Document
@@ -76,9 +83,10 @@ document.addEventListener("click", (evt) => {
   onMovieLoadClick(evt, elUpcomingLoadBtn);
   onMovieLoadClick(evt, elPopularLoadBtn);
   onMovieLoadClick(evt, elTopLoadBtn);
+  onMovieLoadClick(evt, elSearchLoadBtn);
 });
 
-// // UpcomingLoadBtn click
+// // onMovieLoadBtn click
 function onMovieLoadClick(evt, btn) {
   const elTarget = evt.target;
 
@@ -86,7 +94,12 @@ function onMovieLoadClick(evt, btn) {
 
   const totalPages = +elTarget.dataset.movieTotalPage;
   let page = +elTarget.dataset.moviePage;
-  page++;
+  if (page < totalPages) {
+    page++;
+  } else {
+    btn.disabled = true;
+    btn.textContent = "No pages left";
+  }
 
   if (btn === elUpcomingLoadBtn) {
     getData(
@@ -106,6 +119,8 @@ function onMovieLoadClick(evt, btn) {
       +elPopularLoadBtn.dataset.moviePage,
       page
     );
+  } else if (btn === elSearchLoadBtn) {
+    getSearchData(btn.dataset.query, page);
   }
 }
 
