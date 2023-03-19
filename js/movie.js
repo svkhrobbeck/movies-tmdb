@@ -19,6 +19,10 @@ async function getMovieData(id) {
     `${BASE_API}movie/${id}/videos${API_KEY}`
   );
   const dataTrailers = await responseTrailers.json();
+
+  const responseImages = await fetch(`${BASE_API}movie/${id}/images${API_KEY}`);
+  const dataImages = await responseImages.json();
+
   loader(false);
 
   renderTopBanner(dataMovie);
