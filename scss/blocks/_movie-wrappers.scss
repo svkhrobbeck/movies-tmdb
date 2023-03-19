@@ -1,5 +1,8 @@
 /* POPULAR */
-.upcoming,
+.upcoming {
+  padding-top: 30px;
+}
+
 .popular,
 .top {
   user-select: none;
@@ -9,7 +12,7 @@
 .movie__title {
   font-size: 48px;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   transition: font-size 0.5s ease;
 
   @media only screen and (max-width: $tablet-l) {
@@ -30,7 +33,7 @@
   row-gap: 50px;
   justify-content: center;
   margin-bottom: 50px;
-  transition: gap .5s ease;
+  transition: gap 0.5s ease;
 
   @media only screen and (max-width: $tablet-l) {
     gap: 25px;
