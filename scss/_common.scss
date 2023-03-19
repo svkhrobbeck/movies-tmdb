@@ -72,6 +72,37 @@ body {
   }
 }
 
+/* SITENAV */
+.sitenav__list {
+  display: flex;
+  gap: 30px;
+  text-transform: uppercase;
+  transition: gap 0.5s ease;
+
+  @media only screen and (max-width: $tablet) {
+    gap: 20px;
+  }
+
+  @media only screen and (max-width: $mobile) {
+    gap: 15px;
+  }
+}
+
+.sitenav__link {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  transition: font-size 0.5s ease;
+
+  @media only screen and (max-width: $tablet) {
+    font-size: 15px;
+  }
+
+  @media only screen and (max-width: $mobile) {
+    font-size: 14px;
+  }
+}
+
 /* LOGO */
 .logo {
   @media only screen and (max-width: $mobile) {
