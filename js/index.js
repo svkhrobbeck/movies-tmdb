@@ -1,11 +1,16 @@
+let miniLoad = true;
+
 // Get data
 async function getData(
   pagesOfUpcoming = 1,
   pagesOfPopular = 1,
   pagesOfTop = 1
 ) {
-  loader(true);
-  buttonsLoad(true);
+  if (miniLoad) {
+    loader(true);
+    buttonsLoad(true, false);
+  }
+  buttonsLoad(false, true);
   // Upcoming data
   let responseUpcoming = await fetch(
     `${BASE_API}movie/upcoming${API_KEY}&page=${pagesOfUpcoming}`
@@ -22,7 +27,7 @@ async function getData(
   );
   let dataTop = await responseTop.json();
   loader(false);
-  buttonsLoad(false);
+  buttonsLoad();
 
   renderTopBanner(dataUpcoming.results);
   renderMovies(dataUpcoming.results, elUpcomingWrapper);
@@ -89,6 +94,7 @@ document.addEventListener("click", (evt) => {
 // // onMovieLoadBtn click
 function onMovieLoadClick(evt, btn) {
   const elTarget = evt.target;
+  miniLoad = false;
 
   if (elTarget !== btn) return;
 
@@ -158,7 +164,17 @@ const swiper = new Swiper(".swiper", {
 });
 
 // function button load
-function buttonsLoad(state) {
+function buttonsLoad(state = false, load = false) {
+  if (load) {
+    elUpcomingLoadBtn.textContent = "Loading...";
+    elPopularLoadBtn.textContent = "Loading...";
+    elTopLoadBtn.textContent = "Loading...";
+  } else {
+    elUpcomingLoadBtn.textContent = "Load More";
+    elPopularLoadBtn.textContent = "Load More";
+    elTopLoadBtn.textContent = "Load More";
+  }
+
   if (state) {
     elUpcomingLoadBtn.classList.add("d-none");
     elPopularLoadBtn.classList.add("d-none");

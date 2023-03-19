@@ -7,6 +7,7 @@ async function getSearchData(query, page = 1) {
 
   const data = await request.json();
   elSearchLoadBtn.dataset.query = query;
+
   renderMovies(data.results, elSearchingWrapper);
 
   elPopularWrapper.parentElement.remove();
