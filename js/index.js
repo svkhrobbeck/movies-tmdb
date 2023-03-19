@@ -9,8 +9,9 @@ async function getData(
   if (miniLoad) {
     loader(true);
     buttonsLoad(true, false);
+  } else {
+    buttonsLoad(false, true);
   }
-  buttonsLoad(false, true);
   // Upcoming data
   let responseUpcoming = await fetch(
     `${BASE_API}movie/upcoming${API_KEY}&page=${pagesOfUpcoming}`
@@ -27,7 +28,7 @@ async function getData(
   );
   let dataTop = await responseTop.json();
   loader(false);
-  buttonsLoad();
+  buttonsLoad(false, false);
 
   renderTopBanner(dataUpcoming.results);
   renderMovies(dataUpcoming.results, elUpcomingWrapper);
