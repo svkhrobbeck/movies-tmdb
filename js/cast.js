@@ -39,7 +39,9 @@ getCastData();
 
 // Render cast
 function renderCast(cast) {
-  elCastName.textContent = cast.name
+  document.title = cast.name;
+
+  elCastName.textContent = cast.name;
   elCastImg.alt = cast.name;
   cast.profile_path
     ? (elCastImg.src = `${IMG_URL}${cast.profile_path}`)
