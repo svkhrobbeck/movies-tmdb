@@ -1,6 +1,5 @@
 const API_KEY = "?api_key=87606660ec9c3fa9d590708457b96f06";
-const BASE_API = "https://api.themoviedb.org/3/movie/";
-const BASE_CAST_API = "https://api.themoviedb.org/3/";
+const BASE_API = "https://api.themoviedb.org/3/";
 const IMG_URL = "https://image.tmdb.org/t/p/w500";
 const BG_URL = "https://image.tmdb.org/t/p/w1280";
 
@@ -10,6 +9,7 @@ const elUpcomingWrapper = document.querySelector("[data-upcoming-wrapper]");
 const elPopularWrapper = document.querySelector("[data-popular-wrapper]");
 const elTopWrapper = document.querySelector("[data-top-wrapper]");
 const elCastMovieWrapper = document.querySelector("[data-cast-movie-wrapper]");
+const elSearchingWrapper = document.querySelector("[data-searchs-wrapper]");
 
 const elUpcomingLoadBtn = document.querySelector("[data-upcoming-load-btn]");
 const elPopularLoadBtn = document.querySelector("[data-popular-load-btn]");
@@ -30,8 +30,13 @@ function renderMovies(movies, parent) {
       "POPULAR MOVIES";
   } else if (parent === elTopWrapper) {
     document.querySelector("[data-top-title]").textContent = "TOP MOVIES";
-  } else if ((parent = elCastMovieWrapper)) {
+  } else if (parent === elCastMovieWrapper) {
     document.querySelector("[data-cast-movie-title]").textContent = "MOVIES";
+  } else if (parent === elSearchingWrapper) {
+    document.querySelector("[data-searchs-title]").textContent =
+      "SEARCH RESULTS";
+  } else {
+    ("");
   }
 
   movies.forEach((movie) => {
@@ -45,7 +50,7 @@ function renderMovies(movies, parent) {
         : IMG_URL + movie.poster_path
     }`;
     elCardImg.alt = movie.title;
-    elCardRating.textContent = (movie.vote_average).toFixed(1);
+    elCardRating.textContent = movie.vote_average.toFixed(1);
     elCard.querySelector("[data-card-title]").textContent = movie.title;
     elCard.querySelector("[data-card-link]").href = `movie.html?id=${movie.id}`;
 

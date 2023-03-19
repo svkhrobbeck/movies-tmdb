@@ -13,22 +13,22 @@ const elCastImagesWrapper = document.querySelector(
   "[data-cast-images-wrapper]"
 );
 
+// Data
 async function getCastData() {
   loader(true);
-  const request = await fetch(`${BASE_CAST_API}person/${castId}${API_KEY}`);
+  const request = await fetch(`${BASE_API}person/${castId}${API_KEY}`);
   const data = await request.json();
 
   const requestMovies = await fetch(
-    `${BASE_CAST_API}person/${castId}/movie_credits${API_KEY}`
+    `${BASE_API}person/${castId}/movie_credits${API_KEY}`
   );
   const dataMovies = await requestMovies.json();
 
   const requestImages = await fetch(
-    `${BASE_CAST_API}person/${castId}/images${API_KEY}`
+    `${BASE_API}person/${castId}/images${API_KEY}`
   );
   const dataImages = await requestImages.json();
   loader(false);
-  console.log(dataImages.profiles);
 
   renderCast(data);
   renderMovies(dataMovies.cast, elCastMovieWrapper);
@@ -37,6 +37,7 @@ async function getCastData() {
 
 getCastData();
 
+// Render cast
 function renderCast(cast) {
   elCastImg.alt = cast.name;
   cast.profile_path
@@ -57,6 +58,7 @@ function renderCast(cast) {
   cast.homepage ? (elCastLink.href = cast.homepage) : elCastLink.remove();
 }
 
+// Render images
 function renderImages(images, cast) {
   elCastImagesWrapper.innerHTML = "";
 

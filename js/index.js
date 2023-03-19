@@ -8,17 +8,17 @@ async function getData(
   buttonsLoad(true);
   // Upcoming data
   let responseUpcoming = await fetch(
-    `${BASE_API}upcoming${API_KEY}&page=${pagesOfUpcoming}`
+    `${BASE_API}movie/upcoming${API_KEY}&page=${pagesOfUpcoming}`
   );
   let dataUpcoming = await responseUpcoming.json();
   // Popular data
   let responsePopular = await fetch(
-    `${BASE_API}popular${API_KEY}&page=${pagesOfPopular}`
+    `${BASE_API}movie/popular${API_KEY}&page=${pagesOfPopular}`
   );
   let dataPopular = await responsePopular.json();
   // Top data
   let responseTop = await fetch(
-    `${BASE_API}top_rated${API_KEY}&page=${pagesOfTop}`
+    `${BASE_API}movie/top_rated${API_KEY}&page=${pagesOfTop}`
   );
   let dataTop = await responseTop.json();
   loader(false);

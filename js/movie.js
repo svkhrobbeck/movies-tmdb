@@ -9,13 +9,15 @@ const elTrailersTemplate = document.querySelector("[data-trailers-template]");
 // getMovie data
 async function getMovieData(id) {
   loader(true);
-  const responseMovie = await fetch(`${BASE_API}${id}${API_KEY}`);
+  const responseMovie = await fetch(`${BASE_API}movie/${id}${API_KEY}`);
   const dataMovie = await responseMovie.json();
 
-  const responseCasts = await fetch(`${BASE_API}${id}/credits${API_KEY}`);
+  const responseCasts = await fetch(`${BASE_API}movie/${id}/credits${API_KEY}`);
   const dataCasts = await responseCasts.json();
 
-  const responseTrailers = await fetch(`${BASE_API}${id}/videos${API_KEY}`);
+  const responseTrailers = await fetch(
+    `${BASE_API}movie/${id}/videos${API_KEY}`
+  );
   const dataTrailers = await responseTrailers.json();
   loader(false);
 
@@ -102,10 +104,6 @@ const swiper = new Swiper(".swiper", {
   speed: 400,
   slidesPerView: 1,
   spaceBetween: 5,
-  scrollbar: {
-    el: ".swiper-scrollbar",
-    draggable: true,
-  },
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",

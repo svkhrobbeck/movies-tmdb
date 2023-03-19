@@ -55,10 +55,7 @@
     <main class="main-content">
       <!-- TOP BANNER -->
       <section class="swiper top-banner" data-top-banner-wrapper>
-        <div
-          class="swiper-wrapper"
-          data-top-banner-bg
-        ></div>
+        <div class="swiper-wrapper" data-top-banner-bg></div>
         <div class="swiper-scrollbar"></div>
         <div class="container top-banner__inner">
           <span class="to-down" data-to-down>
@@ -82,6 +79,25 @@
         </div>
       </section>
       <!-- /TOP BANNER -->
+
+      <!-- SEARCH-FORM -->
+      <section class="search">
+        <form class="search__form form-search" data-search-form>
+          <input
+            class="form-search__field"
+            type="search"
+            placeholder="Search Movie..."
+            name="search"
+            aria-label="Search"
+          />
+        </form>
+        <h2 class="searchs__title movie__title" data-searchs-title></h2>
+        <div
+          class="container search__wrapper movie__wrapper"
+          data-searchs-wrapper
+        ></div>
+      </section>
+      <!-- /SEARCH-FORM -->
 
       <!-- UPCOMING -->
       <section class="upcoming" id="upcoming">
@@ -167,6 +183,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/search.js"></script>
   </body>
 </html>
-
