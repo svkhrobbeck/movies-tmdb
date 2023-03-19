@@ -127,6 +127,15 @@ body {
   text-align: center;
   font-size: 40px;
   font-weight: 500;
+  transition: font-size 0.5s ease;
+
+  @media only screen and (max-width: $tablet) {
+    font-size: 28px;
+  }
+
+  @media only screen and (max-width: $mobile) {
+    font-size: 20px;
+  }
 }
 
 /* TO DOWN ANIM ARROW */
