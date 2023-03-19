@@ -1,6 +1,6 @@
 /* CASTS */
 .casts {
-  padding-top: 70px;
+  padding: 70px;
 }
 
 .casts__title {
@@ -9,11 +9,21 @@
 
 .casts-card {
   max-width: 318px;
+  position: relative;
 }
 
 .casts-card__img {
   width: 100%;
   height: auto;
+}
+
+.casts-card__link {
+  position: absolute;
+  inset: 0;
+}
+
+.cast-movie {
+  padding-top: 70px;
 }
 
 /* SWIPER */

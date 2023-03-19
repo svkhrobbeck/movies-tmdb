@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie</title>
+
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" href="images/"> -->
+
+    <!-- Stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body id="home">
+    <!-- HEADER -->
+    <header class="site-header" data-site-header>
+      <div class="container site-header__container">
+        <a href="index.html" class="logo">
+          <img
+            class="logo__img"
+            src="images/logo.svg"
+            alt="MovieDB"
+            width="80"
+            height="37"
+          />
+        </a>
+        <nav class="sitenav">
+          <ul class="sitenav__list">
+            <li class="sitenav__item">
+              <a class="sitenav__link" href="#cast">Cast</a>
+            </li>
+            <li class="sitenav__item">
+              <a class="sitenav__link" href="#images">Images</a>
+            </li>
+            <li class="sitenav__item">
+              <a class="sitenav__link" href="#movies">Movies</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- /HEADER -->
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <!-- CAST -->
+      <section class="cast" id="cast">
+        <div class="container cast__inner">
+          <div class="cast__card card-cast">
+            <img class="card-cast__img" width="" height="" data-cast-img />
+            <div class="card-cast__content">
+              <h2 class="card-cast__name" data-cast-name></h2>
+              <p class="card-cast__bio">
+                <span class="card-cast__bio-top">BIOGRAPHY</span>
+
+                <span class="card-cast__bio-inner" data-cast-bio></span>
+              </p>
+              <p class="card-cast__birth" data-cast-birth></p>
+              <p class="card-cast__birth-place">
+                Place of Birth:
+                <span class="card-cast-birth-place-inner" data-cast-place>
+                </span>
+              </p>
+              <p class="card-cast__rating" data-cast-rating></p>
+              <a class="card-cast__link" data-cast-link>Learn more...</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /CAST -->
+
+      <!-- CAST-IMAGES -->
+      <section class="swiper cast-images container" id="images">
+        <h2 class="cast-images__title movie__title" data-cast-images-title></h2>
+        <div
+          class="cast-images__wrapper swiper-wrapper"
+          data-cast-images-wrapper
+        ></div>
+      </section>
+      <!-- /CAST-IMAGEs -->
+
+      <!-- CAST-MOVIE -->
+      <section class="cast-movie" id="movies">
+        <h2 class="cast-movie__title movie__title" data-cast-movie-title></h2>
+        <div
+          class="container cast-movie__wrapper movie__wrapper"
+          data-cast-movie-wrapper
+        ></div>
+      </section>
+      <!-- /CAST-MOVIE -->
+    </main>
+    <!-- /MAIN CONTENT -->
+
+    <!-- FOOTER -->
+    <header class="site-footer">
+      <div class="container site-footer__container">
+        <a href="/" class="logo">
+          <img
+            class="logo__img"
+            src="images/logo.svg"
+            alt="MovieDB"
+            width="80"
+            height="37"
+          />
+        </a>
+      </div>
+    </header>
+    <!-- /FOOTER -->
+
+    <!-- TEMPLATE POPULAR -->
+    <template data-card-template>
+      <div class="popular__card card-popular">
+        <img class="card-popular__img" width="250" height="375" data-card-img />
+        <span class="card-popular__rating-badge" data-card-rating></span>
+        <h2 class="card-popular__title" data-card-title></h2>
+        <a class="card-popular__link" href="" data-card-link></a>
+      </div>
+    </template>
+    <!-- /TEMPLATE POPULAR -->
+
+    <!-- LOADER -->
+    <div class="loader hidden" data-loader>
+      <img class="loader__img" src="images/spinner.svg" alt="loader" />
+    </div>
+    <!-- /LOADER -->
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/cast.js"></script>
+  </body>
+</html>

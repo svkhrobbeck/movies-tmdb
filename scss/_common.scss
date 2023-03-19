@@ -122,6 +122,8 @@ body {
 
 /* ALERT TEXT */
 .alert-text {
+  width: 100%;
+  display: block;
   text-align: center;
   font-size: 40px;
   font-weight: 500;
@@ -145,6 +147,15 @@ body {
       height: 30px;
     }
   }
+}
+
+.cast-images__wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.cast-images__img {
+  width: 100%;
 }
 
 @keyframes down-anim {
