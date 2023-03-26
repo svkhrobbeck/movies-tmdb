@@ -1,11 +1,11 @@
 .cast {
-  padding-top: 100px;
+  padding: 100px 0;
 }
 
 .card-cast {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-around;
   gap: 40px;
 
   @media only screen and (max-width: $tablet) {

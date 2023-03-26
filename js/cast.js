@@ -40,7 +40,6 @@ getCastData();
 // Render cast
 function renderCast(cast) {
   document.title = cast.name;
-
   elCastName.textContent = cast.name;
   elCastImg.alt = cast.name;
   cast.profile_path
@@ -52,13 +51,16 @@ function renderCast(cast) {
       ).toDateString()}`)
     : "";
   elCastBio.textContent = cast.biography;
+  elCastBio.previousElementSibling.textContent = "BIOGRAPHY";
   elCastRating.textContent = `Rating: ${cast.popularity}`;
 
   cast.place_of_birth
     ? (elCastPlaceBirth.textContent = cast.place_of_birth)
     : elCastPlaceBirth.parentElement.remove();
+  elCastPlaceBirth.parentElement.textContent = "Place of Birth:";
 
   cast.homepage ? (elCastLink.href = cast.homepage) : elCastLink.remove();
+  elCastLink.textContent = "Read more...";
 }
 
 // Render images

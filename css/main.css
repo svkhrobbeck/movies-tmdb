@@ -817,7 +817,7 @@ body {
 
 /* CASTS */
 .casts {
-  padding: 70px;
+  padding: 70px 0;
 }
 
 .casts__title {
@@ -850,13 +850,13 @@ body {
 }
 
 .cast {
-  padding-top: 100px;
+  padding: 100px 0;
 }
 
 .card-cast {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-around;
   gap: 40px;
 }
 @media only screen and (max-width: 768px) {
@@ -957,9 +957,6 @@ body {
 
 .trailers-card {
   max-width: 480px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
 }
 
 .trailers-card__video {
@@ -967,6 +964,11 @@ body {
   height: auto;
 }
 
+@media only screen and (min-width: 768px) {
+  .trailers .swiper-wrapper {
+    justify-content: center;
+  }
+}
 .trailers .swiper-slide {
   display: flex;
   justify-content: center;
