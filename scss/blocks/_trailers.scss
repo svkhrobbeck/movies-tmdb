@@ -19,12 +19,6 @@
 
 // /* SWIPER */
 .trailers {
-  .swiper-wrapper {
-    @media only screen and (min-width: $tablet) {
-      justify-content: center;
-    }
-  }
-
   .swiper-slide {
     display: flex;
     justify-content: center;

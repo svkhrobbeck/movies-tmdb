@@ -114,6 +114,29 @@ body {
   overflow: hidden;
 }
 
+.to-top-button {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 100;
+  border: none;
+  padding: 4px;
+  border-radius: 5px;
+  background-color: #171717;
+  border: 1px solid #fff;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.5s ease;
+}
+.to-top-button img {
+  width: 30px;
+  height: 30px;
+}
+.to-top-button.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* SITENAV */
 .sitenav__list {
   display: flex;
@@ -978,11 +1001,6 @@ body {
   height: auto;
 }
 
-@media only screen and (min-width: 768px) {
-  .trailers .swiper-wrapper {
-    justify-content: center;
-  }
-}
 .trailers .swiper-slide {
   display: flex;
   justify-content: center;

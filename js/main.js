@@ -18,6 +18,7 @@ const elSearchLoadBtn = document.querySelector("[data-search-load-btn]");
 const elLoader = document.querySelector("[data-loader]");
 
 const elCardTemplate = document.querySelector("[data-card-template]");
+const elToTopBtn = document.querySelector("[data-to-top-btn]");
 
 // Render Movies
 function renderMovies(movies, parent) {
@@ -74,11 +75,25 @@ function renderMovies(movies, parent) {
 function windowScroll() {
   if (window.pageYOffset > 500) {
     document.querySelector("[data-to-down]").style.opacity = "0";
+    elToTopBtn.classList.remove("hidden");
   } else {
     document.querySelector("[data-to-down]").style.opacity = "1";
+    elToTopBtn.classList.add("hidden");
   }
   ElSiteHeader.classList.toggle("fixed", window.scrollY > 0);
 }
+
+// scroll to top
+function onToTopClick(evt) {
+  const el = evt.target.closest("[data-to-top-btn]");
+
+  if (!el) return;
+
+  document.documentElement.scrollTop = 0;
+  console.log("clicked");
+}
+
+document.addEventListener("click", onToTopClick);
 
 // Loader
 function loader(state) {
